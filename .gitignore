@@ -5,11 +5,8 @@
 /dist-server
 /tmp
 /out-tsc
-/src/index.html
-
 # dependencies
 /node_modules
-!/node_modules/@netcracker
 
 # IDEs and editors
 /.idea
