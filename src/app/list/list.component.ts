@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {TaskModel} from "../tasks/task.model";
+import {TaskService} from "../services/task.service";
 
 @Component({
   selector: 'app-list',
@@ -6,12 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['../../styles/list.component.less']
 })
 export class ListComponent implements OnInit {
-  items = ["task1", "task2", "task3"];
-  input = "input";
 
-  constructor() { }
+  public tasks: TaskModel[];
+
+  constructor(private tasksService: TaskService) { }
 
   ngOnInit() {
+    this.tasks = this.tasksService.getTasks();
   }
 
 }
