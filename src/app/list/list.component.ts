@@ -14,7 +14,7 @@ export class ListComponent implements OnInit {
   constructor(private tasksService: TaskService) { }
 
   ngOnInit() {
-    this.tasks = this.tasksService.getTasks();
+    /*this.tasks = this.tasksService.getTasks();*/
   }
 
 }

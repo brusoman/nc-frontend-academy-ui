@@ -6,15 +6,18 @@ import {TaskModel} from "../tasks/task.model";
 })
 export class TaskService {
 
-  private tasks: TaskModel[] = [{
+  /*private tasks: TaskModel[] = [ {
     name = 'task1',
-    ddl = 'e'
-  }];
+    ddl = 'e',
+    mark = 10,
+    num = 1,
+    level = 1
+  }];*/
 
-  public getTasks(): TaskModel[]{
-    /*get url*/
+  /*public getTasks(): TaskModel[] {
+    //get url
     return this.tasks;
-  }
+  } */
   constructor() { }
 }
 

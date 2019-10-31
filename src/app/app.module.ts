@@ -11,6 +11,18 @@ import { RegistrationComponent } from './registration/registration.component';
 import { TasksComponent } from './tasks/tasks.component';
 import {ListComponent} from "./list/list.component";
 
+
+/*routing*/
+
+import { Routes, RouterModule } from '@angular/router';
+import { NotFoundComponent } from './not-found/not-found.component';
+
+const appRoutes: Routes  = [
+  {path: '', component: RegistrationComponent},
+  {path: 'tasks', component: ListComponent},
+  {path: '**', component: NotFoundComponent}
+]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,13 +30,15 @@ import {ListComponent} from "./list/list.component";
     FooterComponent,
     RegistrationComponent,
     TasksComponent,
-    ListComponent
+    ListComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ClarityModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
