@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { TasksComponent } from './tasks/tasks.component';
-import {ListComponent} from "./list/list.component";
+import {ListComponent} from './list/list.component';
 
 
 /*routing*/
