@@ -1,7 +1,11 @@
-<div class="registration-window">
+<div class="login-wrapper">
   <form class="login">
-    <div class = "registration-window__input-data">
-      <h3>Control panel</h3>
+    <section class="title">
+      <h3 class="welcome">Welcome to</h3>
+      Company Product Name
+      <h5 class="hint">Use your Company ID to sign in or create one now</h5>
+    </section>
+    <div class="login-group">
       <clr-select-container>
         <label class="clr-sr-only">User Role</label>
         <select clrSelect name="type">
@@ -10,16 +14,29 @@
         </select>
       </clr-select-container>
       <clr-input-container>
+        <label class="clr-sr-only">Username</label>
         <input type="text" name="username" clrInput placeholder="Username"/>
       </clr-input-container>
       <clr-password-container>
+        <label class="clr-sr-only">Password</label>
         <input type="password" name="password" clrPassword placeholder="Password"/>
       </clr-password-container>
       <clr-checkbox-wrapper>
         <label>Remember me</label>
         <input type="checkbox" name="rememberMe" clrCheckbox/>
       </clr-checkbox-wrapper>
-      <button type="submit" class="btn btn-success">Log in</button>
+      <div class="error active">
+        Invalid user name or password
+      </div>
+      <nav>
+        <a routerLink="/tasks">
+        <button type="submit"
+                class="btn btn-primary">
+          NEXT
+        </button>
+      </a>
+      </nav>
+      <a href="javascript://" class="signup">Sign up for a Company ID</a>
     </div>
   </form>
 </div>
