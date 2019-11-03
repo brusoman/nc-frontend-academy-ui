@@ -1,18 +1,6 @@
 <div class="login-wrapper">
   <form class="login">
-    <section class="title">
-      <h3 class="welcome">Welcome to</h3>
-      Company Product Name
-      <h5 class="hint">Use your Company ID to sign in or create one now</h5>
-    </section>
     <div class="login-group">
-      <clr-select-container>
-        <label class="clr-sr-only">User Role</label>
-        <select clrSelect name="type">
-          <option value="local">Local Users</option>
-          <option value="admin">Administrator</option>
-        </select>
-      </clr-select-container>
       <clr-input-container>
         <label class="clr-sr-only">Username</label>
         <input type="text" name="username" clrInput placeholder="Username"/>
@@ -21,22 +9,21 @@
         <label class="clr-sr-only">Password</label>
         <input type="password" name="password" clrPassword placeholder="Password"/>
       </clr-password-container>
-      <clr-checkbox-wrapper>
-        <label>Remember me</label>
-        <input type="checkbox" name="rememberMe" clrCheckbox/>
-      </clr-checkbox-wrapper>
       <div class="error active">
         Invalid user name or password
       </div>
-      <nav>
-        <a routerLink="/tasks">
-        <button type="submit"
-                class="btn btn-primary">
-          NEXT
-        </button>
-      </a>
-      </nav>
-      <a href="javascript://" class="signup">Sign up for a Company ID</a>
+      <button type="submit" class="btn btn-primary" routerLink="/tasks">NEXT</button>
     </div>
   </form>
+  <div class="welcome">
+    <div class="welcome__text">
+      <h1>Netcracker Front-end Academy</h1>
+      <h3>Improve and test your developer skills!</h3>
+      <li>With Front-end Academy, you can practice coding without a tutor. Your code is checked online in many ways.</li>
+      <li>Our tasks are complicated as compared with other services. After them, you will be ready for projects with a mentor.</li>
+      <li>Our tasks give you real-life skills which you can't get neither by doing such projects nor by preparing for exams.</li>
+    </div>
+    <img src="../../assets/images/NetcrackerLogo.png" alt="logo">
+  </div>
 </div>
+
