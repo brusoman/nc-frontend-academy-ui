@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {TaskModel} from '../tasks/task.model';
-import {TaskService} from '../services/task.service';
+import {TaskModel} from '../../models/task.model';
+import {TaskService} from '../../services/task.service';
 
 @Component({
   selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['../../styles/list.component.less']
+  templateUrl: './list.component.html'
 })
 export class ListComponent implements OnInit {
 
