@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
-import {TaskModel} from "../models/task.model";
+import { TaskModel } from '../models/task.model';
+import { TASKS} from '../task';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
+
 export class TaskService {
 
-  /*private tasks: TaskModel[] = [ {
-    name = 'task1',
-    ddl = 'e',
-    mark = 10,
-    num = 1,
-    level = 1
-  }];*/
+  tasks: TaskModel[] = [{
+    num: 1,
+    name: 'task1',
+    mrk: 10,
+    ddl: 'e',
+    level: 1
+  }];
 
-  /*public getTasks(): TaskModel[] {
-    //get url
-    return this.tasks;
-  } */
+  public getTasks(): TaskModel[] {
+    return TASKS;
+  }
   constructor() { }
 }
-
-

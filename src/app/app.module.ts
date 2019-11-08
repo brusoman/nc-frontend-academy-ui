@@ -10,6 +10,7 @@ import {RegistrationComponent} from './components/registration/registration.comp
 import {TasksComponent} from './components/tasks/tasks.component';
 import {ListComponent} from './components/list/list.component';
 import {RouterModule, Routes} from '@angular/router';
+import {TaskModel} from './models/task.model';
 
 
 /*routing*/

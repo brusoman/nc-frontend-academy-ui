@@ -1,7 +1,7 @@
 export interface TaskModel {
   num: number;
   name: string;
-  mark: number;
+  mrk: number;
   ddl: string;
   level: number;
 }
