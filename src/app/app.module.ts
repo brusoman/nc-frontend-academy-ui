@@ -11,13 +11,14 @@ import {TasksComponent} from './components/tasks/tasks.component';
 import {ListComponent} from './components/list/list.component';
 import {RouterModule, Routes} from '@angular/router';
 import {TaskModel} from './models/task.model';
+import { TaskPageComponent } from './components/task-page/task-page.component';
 
 
 /*routing*/
 
 const appRoutes: Routes = [
   {path: '', component: RegistrationComponent, pathMatch: 'full'},
-  {path: 'tasks', component: ListComponent},
+  {path: 'tasks', component: TaskPageComponent},
   {path: '**', redirectTo: '/tasks'}
 ];
 
@@ -28,6 +29,7 @@ const appRoutes: Routes = [
     RegistrationComponent,
     TasksComponent,
     ListComponent,
+    TaskPageComponent,
   ],
   imports: [
     BrowserModule,

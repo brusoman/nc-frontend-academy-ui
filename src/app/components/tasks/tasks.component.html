@@ -1,1 +1,6 @@
 <p>{{tasks[1].name}}</p>
+
+
+  <p *ngFor="let item of tasks">
+    {{item.name}} {{item.ddl}} {{item.mrk}}
+  </p>

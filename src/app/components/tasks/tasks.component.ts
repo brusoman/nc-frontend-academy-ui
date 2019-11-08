@@ -11,6 +11,7 @@ import {TaskModel} from '../../models/task.model';
 export class TasksComponent implements OnInit {
 
   tasks: TaskModel[];
+  i: number;
 
   constructor(private taskService: TaskService) {}
 
