@@ -3,16 +3,16 @@
     <div class="login-group">
       <clr-input-container>
         <label class="clr-sr-only">Username</label>
-        <input type="text" name="username" clrInput placeholder="Username"/>
+        <input type="text" name="username" clrInput placeholder="Username" [(ngModel)]="username"/>
       </clr-input-container>
       <clr-password-container>
         <label class="clr-sr-only">Password</label>
-        <input type="password" name="password" clrPassword placeholder="Password"/>
+        <input type="password" name="password" clrPassword placeholder="Password" [(ngModel)]="password"/>
       </clr-password-container>
       <!--<div class="error active">
         Invalid user name or password
       </div>-->
-      <button type="submit" class="btn btn-primary">NEXT</button>
+      <button type="submit" class="btn btn-primary" routerLink="/tasks" (click)="Login()">NEXT</button>
     </div>
   </form>
   <div class="welcome">
@@ -23,7 +23,7 @@
       <li>Our tasks are complicated as compared with other services. After them, you will be ready for projects with a mentor.</li>
       <li>Our tasks give you real-life skills which you can't get neither by doing such projects nor by preparing for exams.</li>
     </div>
-    <img src="../../assets/images/NetcrackerLogo.png" alt="logo">
+    <img src="../../../assets/images/NetcrackerLogo.png" alt="logo">
   </div>
 </div>
 
