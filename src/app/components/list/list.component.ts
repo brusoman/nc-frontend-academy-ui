@@ -8,12 +8,17 @@ import {TaskService} from '../../services/task.service';
 })
 export class ListComponent implements OnInit {
 
-  public tasks: TaskModel[];
+  tasks: TaskModel[];
+  i: number;
 
-  constructor(private tasksService: TaskService) { }
+  constructor(private taskService: TaskService) {}
+
+  getTasks(): void {
+    this.tasks = this.taskService.getTasks();
+  }
 
   ngOnInit() {
-    /*this.tasks = this.tasksService.getTasks();*/
+    this.getTasks();
   }
 
 }
