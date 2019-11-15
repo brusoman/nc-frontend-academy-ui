@@ -4,24 +4,24 @@
   <clr-stack-block>
       <clr-stack-label>Basic</clr-stack-label>
 
-      <clr-stack-block>
-        <clr-stack-label>task 1</clr-stack-label>
-      </clr-stack-block>
-      <clr-stack-block>
-        <clr-stack-label>task 2</clr-stack-label>
-      </clr-stack-block>
+    <clr-stack-block  *ngFor="let item of tasks">
+      <ng-container *ngIf="item.level == 1">
+        <clr-stack-label>{{item.name}}</clr-stack-label>
+      </ng-container>
+    </clr-stack-block>
+
   </clr-stack-block>
 
   <clr-stack-block>
       <clr-stack-label>Level up</clr-stack-label>
 
-      <app-tasks></app-tasks>
-      <clr-stack-block>
-        <clr-stack-label>task 2</clr-stack-label>
-      </clr-stack-block>
-      <clr-stack-block>
-        <clr-stack-label>task 3</clr-stack-label>
-      </clr-stack-block>
+    <clr-stack-block  *ngFor="let item of tasks">
+      <ng-container *ngIf="item.level == 2">
+        <clr-stack-label>{{item.name}}</clr-stack-label>
+      </ng-container>
+    </clr-stack-block>
+
+
   </clr-stack-block>
 
     <clr-stack-block>

@@ -10,6 +10,8 @@ export class ListComponent implements OnInit {
 
   tasks: TaskModel[];
   i: number;
+  typeLevel: number[] = [1, 2, 3];
+
 
   constructor(private taskService: TaskService) {}
 
