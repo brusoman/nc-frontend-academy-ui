@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import {FormGroup, FormBuilder} from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -8,17 +8,23 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './registration.component.html'
 })
 export class RegistrationComponent implements OnInit {
-  username = '';
-  password = '';
+  user: FormGroup;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private fb: FormBuilder) {
 
   }
   Login() {
-    console.log('you are logging in');
-    this.authService.login(this.username, this.password);
-
+    this.authService.login(this.user);
   }
 
-  ngOnInit() { }
+  initForm() {
+    this.user = this.fb.group({
+      username: [''],
+      password: ['']
+    });
+  }
+
+  ngOnInit() {
+    this.initForm();
+  }
 }

@@ -1,17 +1,14 @@
 <div class="login-wrapper">
-  <form class="login">
+  <form class="login" [formGroup]="user">
     <div class="login-group">
       <clr-input-container>
         <label class="clr-sr-only">Username</label>
-        <input type="text" name="username" clrInput placeholder="Username" [(ngModel)]="username"/>
+        <input type="text" id="username" clrInput placeholder="Username" formControlName="username"/>
       </clr-input-container>
       <clr-password-container>
         <label class="clr-sr-only">Password</label>
-        <input type="password" name="password" clrPassword placeholder="Password" [(ngModel)]="password"/>
+        <input type="password" id="password" clrPassword placeholder="Password" formControlName="password"/>
       </clr-password-container>
-      <!--<div class="error active">
-        Invalid user name or password
-      </div>-->
       <button type="submit" class="btn btn-primary" routerLink="/tasks" (click)="Login()">NEXT</button>
     </div>
   </form>

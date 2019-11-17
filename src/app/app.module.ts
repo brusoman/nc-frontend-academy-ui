@@ -11,6 +11,7 @@ import {TasksComponent} from './components/tasks/tasks.component';
 import {ListComponent} from './components/list/list.component';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 /*routing*/
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     ClarityModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
