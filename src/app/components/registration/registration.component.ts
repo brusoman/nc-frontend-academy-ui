@@ -1,20 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import {FormGroup, FormBuilder} from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import {HttpService} from '../../services/http.service';
+import {User} from '../../models/user.model';
 
 @Component({
   selector: 'app-registration',
-  templateUrl: './registration.component.html'
+  templateUrl: './registration.component.html',
+  providers: [HttpService]
 })
 export class RegistrationComponent implements OnInit {
   user: FormGroup;
-
-  constructor(private authService: AuthService, private fb: FormBuilder) {
+  receivedUser: User = new User();
+  done = false;
+  url = 'http://localhost:8080/backend/auth'
+  constructor(private fb: FormBuilder, private http: HttpService) {
 
   }
   Login() {
-    this.authService.login(this.user);
+    this.http.postData(this.url, this.user.value)
+      .subscribe(
+       (data: User) => {this.receivedUser = data; this.done = true; },
+        error => console.log(error)
+     );
   }
 
   initForm() {

@@ -12,14 +12,16 @@ import {ListComponent} from './components/list/list.component';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {HttpService} from './services/http.service';
 
 
 /*routing*/
 
 const appRoutes: Routes = [
-  {path: '', component: RegistrationComponent, pathMatch: 'full'},
+  {path: 'registration', component: RegistrationComponent, pathMatch: 'full'},
   {path: 'tasks', component: ListComponent},
-  {path: '**', redirectTo: '/tasks'}
+  {path: '**', redirectTo: ''}
 ];
 
 @NgModule({
@@ -37,9 +39,10 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
