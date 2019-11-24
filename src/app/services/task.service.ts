@@ -8,14 +8,6 @@ import { TASKS} from '../task';
 
 export class TaskService {
 
-  tasks: TaskModel[] = [{
-    num: 1,
-    name: 'task1',
-    mrk: 10,
-    ddl: 'e',
-    level: 1
-  }];
-
   public getTasks(): TaskModel[] {
     return TASKS;
   }

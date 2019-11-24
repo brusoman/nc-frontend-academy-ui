@@ -4,35 +4,32 @@
   <clr-stack-block>
       <clr-stack-label>Basic</clr-stack-label>
 
-    <clr-stack-block  *ngFor="let item of tasks">
-      <ng-container *ngIf="item.level == 1">
-        <clr-stack-label>{{item.name}}</clr-stack-label>
-      </ng-container>
-    </clr-stack-block>
+      <clr-stack-block  *ngFor="let item of basic">
+        <clr-stack-label>
+          {{item.name}}
+        </clr-stack-label>
+        <button class="but1" *ngIf="isPressed" (click)="swaper(item.id)">...</button>
+        <button *ngIf="!isPressed" (click)="swaper(item.id)">...</button>
+        <p *ngIf="!isPressed"> lorem 30</p>
+      </clr-stack-block>
 
   </clr-stack-block>
 
   <clr-stack-block>
       <clr-stack-label>Level up</clr-stack-label>
 
-    <clr-stack-block  *ngFor="let item of tasks">
-      <ng-container *ngIf="item.level == 2">
+    <clr-stack-block  *ngFor="let item of levelUp">
         <clr-stack-label>{{item.name}}</clr-stack-label>
-      </ng-container>
     </clr-stack-block>
 
-
   </clr-stack-block>
+
 
     <clr-stack-block>
       <clr-stack-label>Advanced</clr-stack-label>
 
-      <clr-stack-block>
-        <clr-stack-label>task 1</clr-stack-label>
-      </clr-stack-block>
-
-      <clr-stack-block>
-        <clr-stack-label>task 2</clr-stack-label>
+      <clr-stack-block  *ngFor="let item of advanc">
+        <clr-stack-label>{{item.name}}</clr-stack-label>
       </clr-stack-block>
 
     </clr-stack-block>
