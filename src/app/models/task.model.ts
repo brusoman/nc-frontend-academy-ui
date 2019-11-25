@@ -5,3 +5,10 @@ export interface TaskModel {
   ddl: string;
   level: number;
 }
+export class Task {
+  number: number;
+  section: number;
+  description: number;
+  attemptsMax: number;
+  taskName: string;
+}

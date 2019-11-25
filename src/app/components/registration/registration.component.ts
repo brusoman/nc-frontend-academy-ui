@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder} from '@angular/forms';
 import {HttpService} from '../../services/http.service';
 import {User} from '../../models/user.model';
+import {UserData} from '../../models/userData.model';
+
 
 @Component({
   selector: 'app-registration',
@@ -10,14 +12,14 @@ import {User} from '../../models/user.model';
 })
 export class RegistrationComponent implements OnInit {
   user: FormGroup;
-  receivedUser: User = new User();
+  receivedUser: User;
   done = false;
-  url = 'http://localhost:8080/backend/auth'
+  userData: UserData;
   constructor(private fb: FormBuilder, private http: HttpService) {
 
   }
   Login() {
-    this.http.postData(this.url, this.user.value)
+    this.http.postLogPass(this.user.value)
       .subscribe(
        (data: User) => {this.receivedUser = data; this.done = true; },
         error => console.log(error)
