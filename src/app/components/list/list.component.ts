@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, OnInit, EventEmitter } from '@angular/core';
 import {TaskModel} from '../../models/task.model';
 import {TaskService} from '../../services/task.service';
 
@@ -8,10 +8,13 @@ import {TaskService} from '../../services/task.service';
 })
 export class ListComponent implements OnInit {
 
+  @Output() public outToTaskPage = new EventEmitter();
+
   tasks: TaskModel[];
   basic: TaskModel[] = [];
   levelUp: TaskModel[] = [];
   advanc: TaskModel[] = [];
+  idList: number = 0;
 
   isPressed: boolean = true;
 
@@ -40,19 +43,16 @@ export class ListComponent implements OnInit {
       }
       i++;
     }
-
   }
 
-  swaper(id: number): number {
+  sendToTaskPage(idList: number) {
     this.isPressed = !this.isPressed;
-    return id;
+    this.outToTaskPage.emit(idList);
   }
 
   constructor(private taskService: TaskService) {}
-
   getTasks(): void {
     this.tasks = this.taskService.getTasks();
-
   }
 
   ngOnInit() {

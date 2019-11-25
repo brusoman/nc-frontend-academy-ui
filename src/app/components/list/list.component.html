@@ -8,9 +8,8 @@
         <clr-stack-label>
           {{item.name}}
         </clr-stack-label>
-        <button class="but1" *ngIf="isPressed" (click)="swaper(item.id)">...</button>
-        <button *ngIf="!isPressed" (click)="swaper(item.id)">...</button>
-        <p *ngIf="!isPressed"> lorem 30</p>
+        <button class="btn btn-link" *ngIf="isPressed" (click)='sendToTaskPage(item.id)'>...</button>
+        <button class="btn btn-link" *ngIf="!isPressed" (click)="sendToTaskPage(0)">...</button>
       </clr-stack-block>
 
   </clr-stack-block>
@@ -20,6 +19,8 @@
 
     <clr-stack-block  *ngFor="let item of levelUp">
         <clr-stack-label>{{item.name}}</clr-stack-label>
+      <button class="btn btn-link" *ngIf="isPressed" (click)='sendToTaskPage(item.id)'>...</button>
+      <button class="btn btn-link" *ngIf="!isPressed" (click)="sendToTaskPage(0)">...</button>
     </clr-stack-block>
 
   </clr-stack-block>
@@ -30,6 +31,8 @@
 
       <clr-stack-block  *ngFor="let item of advanc">
         <clr-stack-label>{{item.name}}</clr-stack-label>
+        <button class="btn btn-link" *ngIf="isPressed" (click)='sendToTaskPage(item.id)'>...</button>
+        <button class="btn btn-link" *ngIf="!isPressed" (click)="sendToTaskPage(0)">...</button>
       </clr-stack-block>
 
     </clr-stack-block>
