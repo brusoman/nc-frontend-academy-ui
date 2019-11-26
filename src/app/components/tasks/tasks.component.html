@@ -1,1 +1,6 @@
-<p>tasks works!</p>
+<p>{{tasks[1].name}}</p>
+
+
+  <p *ngFor="let item of tasks">
+    {{item.name}} {{item.mrk}}
+  </p>
