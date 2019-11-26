@@ -8,7 +8,7 @@ export class UserTask {
   userTaskPK: UserTaskPK;
 }
 class TaskDto {
-  attemptsMax: 0;
+  attemptsMax: number;
   description: string;
   id: number;
   number: number;
