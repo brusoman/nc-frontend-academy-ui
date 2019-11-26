@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ClarityModule} from '@clr/angular';
@@ -14,12 +13,14 @@ import {TaskModel} from './models/task.model';
 import { TaskPageComponent } from './components/task-page/task-page.component';
 import { ConditionComponent } from './components/condition/condition.component';
 import { RatingComponent } from './components/rating/rating.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 
 /*routing*/
 
 const appRoutes: Routes = [
-  {path: '', component: RegistrationComponent, pathMatch: 'full'},
+  {path: 'login', component: RegistrationComponent, pathMatch: 'full'},
   {path: 'tasks', component: TaskPageComponent},
   {path: '**', redirectTo: '/tasks'}
 ];
@@ -42,9 +43,11 @@ const appRoutes: Routes = [
     AppRoutingModule,
     ClarityModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule {

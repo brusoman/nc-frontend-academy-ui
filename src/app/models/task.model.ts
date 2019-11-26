@@ -8,3 +8,10 @@ export interface TaskModel {
   percent: number;
   attemt: number;
 }
+export class Task {
+  number: number;
+  section: number;
+  description: number;
+  attemptsMax: number;
+  taskName: string;
+}
