@@ -15,6 +15,7 @@ export class RegistrationComponent implements OnInit {
   receivedUser: User;
   done = false;
   userData: UserData;
+  error: any;
   constructor(private fb: FormBuilder, private http: HttpService) {
 
   }
@@ -22,7 +23,7 @@ export class RegistrationComponent implements OnInit {
     this.http.postLogPass(this.user.value)
       .subscribe(
        (data: User) => {this.receivedUser = data; this.done = true; },
-        error => console.log(error)
+        error => {this.error = error; console.log(error); }
      );
   }
 
