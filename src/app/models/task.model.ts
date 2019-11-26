@@ -1,7 +1,10 @@
 export interface TaskModel {
+  id: number;
   num: number;
   name: string;
-  mark: number;
+  mrk: number;
   ddl: string;
   level: number;
+  percent: number;
+  attemt: number;
 }
