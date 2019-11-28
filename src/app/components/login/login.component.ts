@@ -6,16 +6,16 @@ import {UserData} from '../../models/userData.model';
 
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
+  selector: 'app-login',
+  templateUrl: './login.component.html',
   providers: [HttpService]
 })
-export class RegistrationComponent implements OnInit {
+export class LoginComponent implements OnInit {
   user: FormGroup;
   receivedUser: User;
   done = false;
   userData: UserData;
-  error: any;
+  error: any = null;
   constructor(private fb: FormBuilder, private http: HttpService) {
 
   }

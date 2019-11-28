@@ -9,6 +9,9 @@
         <label class="clr-sr-only">Password</label>
         <input type="password" id="password" clrPassword placeholder="Password" formControlName="password"/>
       </clr-password-container>
+      <div class="error active" *ngIf="error">
+        {{error|json}}
+      </div>
       <button type="submit" class="btn btn-primary" (click)="Login()">NEXT</button>
     </div>
   </form>

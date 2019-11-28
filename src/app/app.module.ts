@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {ClarityModule} from '@clr/angular';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HeaderComponent} from './components/header/header.component';
-import {RegistrationComponent} from './components/registration/registration.component';
+import {LoginComponent} from './components/login/login.component';
 import {TasksComponent} from './components/tasks/tasks.component';
 import {ListComponent} from './components/list/list.component';
 import {RouterModule, Routes} from '@angular/router';
@@ -20,7 +20,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 /*routing*/
 
 const appRoutes: Routes = [
-  {path: 'login', component: RegistrationComponent, pathMatch: 'full'},
+  {path: 'login', component: LoginComponent, pathMatch: 'full'},
   {path: 'tasks', component: TaskPageComponent},
   {path: '**', redirectTo: '/tasks'}
 ];
@@ -31,7 +31,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HeaderComponent,
-    RegistrationComponent,
+    LoginComponent,
     TasksComponent,
     ListComponent,
     TaskPageComponent,
