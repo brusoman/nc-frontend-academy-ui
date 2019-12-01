@@ -4,7 +4,25 @@
 <div>
   <p>Your mark: {{curTaskRait.mrk}}</p>
 </div>
-<div>
-  <clr-icon shape="star"></clr-icon>
-  <clr-icon shape="star" class="is-solid"></clr-icon>
+<div *ngFor="let item of attemt" class="star1">
+  <clr-icon *ngIf="item === 0" shape="star"></clr-icon>
+  <clr-icon *ngIf="item === 1" shape="star" class="is-solid"></clr-icon>
 </div>
+<ng-container class="pass-table">
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="left">Время сдачи</th>
+          <th class="left">Процесс совпадения</th>
+        </tr>
+      </thead>
+        <tbody>
+          <tr>
+            <td class="left">10.11.2019</td>
+            <td class="left">{{curTaskRait.percent}}</td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+</ng-container>

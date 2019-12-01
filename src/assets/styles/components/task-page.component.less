@@ -1,13 +1,21 @@
 .box {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: stretch;
 }
 
-.box div {
-  width: 600px;
-  height: 960px;
+.box div:nth-child(1) {
+  flex: 1;
 }
+
+.box div:nth-child(2) {
+  flex: 1;
+}
+
+.box div:nth-child(3) {
+  flex: 1;
+}
+
 
 
 .condition {
@@ -21,7 +29,7 @@
 
 .box2 {
   display: flex;
-  overflow: auto;
+  flex-direction: row;
 }
 
 .box2 div:nth-child(1) {
@@ -31,6 +39,6 @@
 .box2 div:nth-child(2) {
   flex: 2;
   border-left:1px solid #ccc7c3;
+  height:820px;
 }
-
 
