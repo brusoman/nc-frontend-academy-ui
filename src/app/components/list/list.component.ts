@@ -14,15 +14,15 @@ export class ListComponent implements OnInit {
   basic: TaskModel[] = [];
   levelUp: TaskModel[] = [];
   advanc: TaskModel[] = [];
-  idList: number = 0;
+  idList = 0;
 
-  isPressed: boolean = true;
+  isPressed = true;
 
   crArr(): void {
-    let i: number = 0;
-    let adv: number = 0;
-    let bas: number = 0;
-    let lev: number = 0;
+    let i = 0;
+    let adv = 0;
+    let bas = 0;
+    let lev = 0;
     while (i < 6) {
       switch (this.tasks[i].level) {
         case 1 : {
@@ -46,7 +46,7 @@ export class ListComponent implements OnInit {
   }
 
   sendToTaskPage(idList: number) {
-    this.isPressed = !this.isPressed;
+    this.isPressed = true;
     this.outToTaskPage.emit(idList);
   }
 

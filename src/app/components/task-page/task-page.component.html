@@ -2,7 +2,7 @@
 [class.box]="!showInfo"
 [class.box2]="showInfo">
   <div>
-    <app-list (outToTaskPage) = 'recieveFromList($event)'></app-list>
+    <app-list (outToTaskPage) = 'receiveFromList($event)'></app-list>
   </div>
   <ng-container  *ngIf="!showInfo">
     <div class="condition">

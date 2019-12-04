@@ -10,7 +10,7 @@ import {TaskService} from '../../services/task.service';
 })
 export class TaskPageComponent implements OnInit {
 
-  showInfo: boolean = true;
+  showInfo = true;
   tasksP: TaskModel[] = [];
   idPage: number;
   currentTask: TaskModel;
@@ -24,14 +24,14 @@ export class TaskPageComponent implements OnInit {
   ngOnInit() {
     this.getTasks();
   }
-  recieveFromList(evnt) {
+  receiveFromList(evnt) {
     this.idPage = evnt;
-    if (evnt === 0){
+    if (evnt === 0) {
       this.showInfo = true;
     } else {
       this.showInfo = false;
     }
-    let i: number = 0;
+    let i = 0;
     while (i < 6) {
       if (this.tasksP[i].id === this.idPage) {
         this.currentTask = this.tasksP[i];

@@ -8,8 +8,7 @@
         <clr-stack-label>
           {{item.name}}
         </clr-stack-label>
-        <button class="btn btn-link" *ngIf="isPressed" (click)='sendToTaskPage(item.id)'>...</button>
-        <button class="btn btn-link" *ngIf="!isPressed" (click)="sendToTaskPage(0)">...</button>
+        <button class="btn btn-link" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</button>
       </clr-stack-block>
 
   </clr-stack-block>
@@ -19,8 +18,7 @@
 
     <clr-stack-block  *ngFor="let item of levelUp">
         <clr-stack-label>{{item.name}}</clr-stack-label>
-      <button class="btn btn-link" *ngIf="isPressed" (click)='sendToTaskPage(item.id)'>...</button>
-      <button class="btn btn-link" *ngIf="!isPressed" (click)="sendToTaskPage(0)">...</button>
+      <button class="btn btn-link" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</button>
     </clr-stack-block>
 
   </clr-stack-block>
@@ -31,7 +29,7 @@
 
       <clr-stack-block  *ngFor="let item of advanc">
         <clr-stack-label>{{item.name}}</clr-stack-label>
-        <button class="btn btn-link" *ngIf="isPressed" (click)='sendToTaskPage(item.id)'>...</button>
+        <button class="btn btn-link" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</button>
         <button class="btn btn-link" *ngIf="!isPressed" (click)="sendToTaskPage(0)">...</button>
       </clr-stack-block>
 

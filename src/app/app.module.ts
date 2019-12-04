@@ -15,13 +15,14 @@ import { ConditionComponent } from './components/condition/condition.component';
 import { RatingComponent } from './components/rating/rating.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-
+import { SettingsComponent } from './components/settings/settings.component';
 
 /*routing*/
 
 const appRoutes: Routes = [
-  {path: 'login', component: LoginComponent, pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
   {path: 'tasks', component: TaskPageComponent},
+  {path: 'settings', component: SettingsComponent},
   {path: '**', redirectTo: '/tasks'}
 ];
 
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
     TaskPageComponent,
     ConditionComponent,
     RatingComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,4 +6,17 @@
       </span>
     </a>
   </div>
+  <div class="header-actions">
+    <clr-dropdown>
+      <button class="nav-icon" clrDropdownTrigger aria-label="toggle settings menu">
+        <clr-icon shape="cog"></clr-icon>
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+        <a clrDropdownItem routerLink="tasks">Задачи</a>
+        <a clrDropdownItem routerLink="settings">Настройки</a>
+        <a clrDropdownItem>Выход</a>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </div>
 </header>
