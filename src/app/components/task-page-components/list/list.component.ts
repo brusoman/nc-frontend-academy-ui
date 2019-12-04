@@ -1,6 +1,6 @@
 import { Component, Output, OnInit, EventEmitter } from '@angular/core';
-import {TaskModel} from '../../models/task.model';
-import {TaskService} from '../../services/task.service';
+import {TaskModel} from '../../../models/task.model';
+import {TaskService} from '../../../services/task.service';
 
 @Component({
   selector: 'app-list',

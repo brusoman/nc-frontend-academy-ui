@@ -3,11 +3,11 @@
     Rating
   </div>
    <div class="imdn">
-     <img src="../../../assets/images/david.jpg" width="250"
+     <img src="../../../../assets/images/david.jpg" width="250"
           height="357" alt="logo">
    </div>
    <div class="imdn2">
-     <img src="../../../assets/images/landau.jpg" width="250"
+     <img src="../../../../assets/images/landau.jpg" width="250"
           height="357" alt="logo">
    </div>
    <div class="swaper">
@@ -15,7 +15,7 @@
    </div>
   <div class="pass-stars">
     <p>Количество попыток</p>
-    <div *ngFor="let item of attemt" class="stars">
+    <div *ngFor="let item of attempt" class="stars">
       <clr-icon *ngIf="item === 0" shape="star"></clr-icon>
       <clr-icon *ngIf="item === 1" shape="star" class="is-solid"></clr-icon>
     </div>
@@ -25,12 +25,12 @@
       <thead>
         <tr>
           <th class="left">Время сдачи</th>
-          <th class="left">Процесс совпадения</th>
+          <th class="left">Процент совпадения</th>
         </tr>
       </thead>
         <tbody>
           <tr>
-            <td class="left">10.11.2019</td>
+            <td class="left" class="btn btn-link">10.11.2019</td>
             <td class="left">{{curTaskRait.percent}}</td>
           </tr>
         </tbody>
