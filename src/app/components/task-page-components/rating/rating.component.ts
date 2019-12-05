@@ -4,7 +4,7 @@ import {TaskModel} from '../../../models/task.model';
 @Component({
   selector: 'app-rating',
   templateUrl: './rating.component.html',
-  styleUrls: ['../../../../assets/styles/components/rating.component.less']
+  styleUrls: ['../../../../assets/styles/components/task-page-components/rating.component.less']
 })
 export class RatingComponent implements OnInit {
 

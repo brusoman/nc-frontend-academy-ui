@@ -1,13 +1,15 @@
 .horizontalTask{
   margin-top: 20px;
   margin-left: 20px;
-  display: flex;
-  flex-direction: column;
+  margin-right: 20px;
+  display: grid;
+  grid-template-rows: 1fr 100px;
 }
 
 .verticalTask{
   display: flex;
   flex-direction: row;
+  height: 100%;
 }
 .verticalTask app-tl-condition:nth-child(1){
   flex: 1;
@@ -15,4 +17,6 @@
 
 .verticalTask app-tl-rating:nth-child(2){
   flex: 2;
+  margin-left: 20px;
+
 }
