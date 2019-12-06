@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ListComponent } from '../list/list.component';
 import {TaskModel} from '../../../models/task.model';
 import {TaskService} from '../../../services/task.service';
+import {UserTask} from '../../../models/userTask.model';
 
 @Component({
   selector: 'app-task-page',
@@ -10,34 +11,23 @@ import {TaskService} from '../../../services/task.service';
 })
 export class TaskPageComponent implements OnInit {
 
+  currentTask: UserTask;
   showInfo = true;
-  tasksP: TaskModel[] = [];
-  idPage: number;
-  currentTask: TaskModel;
 
   constructor(private taskService: TaskService) { }
 
-  getTasks(): void {
-    this.tasksP = this.taskService.getTasks();
-  }
-
-  ngOnInit() {
-    this.getTasks();
-  }
-  receiveFromList(evnt) {
-    this.idPage = evnt;
-    if (evnt === 0) {
+  receiveFromList(event) {
+    this.currentTask = event;
+    if (event === null) {
       this.showInfo = true;
     } else {
       this.showInfo = false;
     }
-    let i = 0;
-    while (i < 6) {
-      if (this.tasksP[i].id === this.idPage) {
-        this.currentTask = this.tasksP[i];
-      }
-      i++;
-    }
   }
+
+
+  ngOnInit() {
+  }
+
 
 }

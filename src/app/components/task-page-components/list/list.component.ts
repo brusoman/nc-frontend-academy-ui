@@ -1,63 +1,68 @@
-import { Component, Output, OnInit, EventEmitter } from '@angular/core';
-import {TaskModel} from '../../../models/task.model';
-import {TaskService} from '../../../services/task.service';
+import {Component, Output, OnInit, EventEmitter, Input} from '@angular/core';
+import {Task, TaskModel} from '../../../models/task.model';
+import {HttpService} from '../../../services/http.service';
+import {UserTask} from '../../../models/userTask.model';
 
 @Component({
   selector: 'app-list',
-  templateUrl: './list.component.html'
+  templateUrl: './list.component.html',
+  providers: [HttpService]
 })
 export class ListComponent implements OnInit {
 
   @Output() public outToTaskPage = new EventEmitter();
-
-  tasks: TaskModel[];
-  basic: TaskModel[] = [];
-  levelUp: TaskModel[] = [];
-  advanc: TaskModel[] = [];
-  idList = 0;
-
+  currentTask: UserTask;
+  taskList: Task[];
   isPressed = true;
+  basicTasks: Task[] = [];
+  levelUpTasks: Task[] = [];
+  advancedTasks: Task[] = [];
 
-  crArr(): void {
+  createTaskArrays() {
     let i = 0;
-    let adv = 0;
-    let bas = 0;
-    let lev = 0;
-    while (i < 6) {
-      switch (this.tasks[i].level) {
-        case 1 : {
-          this.basic[bas] = this.tasks[i];
-          bas++;
+    while (i < this.taskList.length) {
+      switch (this.taskList[i].section) {
+        case 'basic': {
+          this.basicTasks.push(this.taskList[i]);
+          i++;
           break;
         }
-        case 2 : {
-          this.levelUp[lev] = this.tasks[i];
-          lev++;
+        case 'levelUp': {
+          this.levelUpTasks.push(this.taskList[i]);
+          i++;
           break;
         }
-        case 3 : {
-          this.advanc[adv] = this.tasks[i];
-          adv++;
+        case 'advanced': {
+          this.advancedTasks.push(this.taskList[i]);
+          i++;
           break;
         }
       }
-      i++;
     }
-  }
 
+
+  }
   sendToTaskPage(idList: number) {
+    this.getUserTask(idList);
     this.isPressed = true;
-    this.outToTaskPage.emit(idList);
+  }
+  getTaskList() {
+    this.http.getTask().subscribe(
+      (data) => {this.taskList = data;
+                 this.createTaskArrays(); }
+    );
+  }
+  getUserTask(taskId: number) {
+    this.http.getUserTask(taskId, 1).subscribe(
+      (data) => {this.currentTask = data;
+                 this.outToTaskPage.emit(this.currentTask);
+        });
   }
 
-  constructor(private taskService: TaskService) {}
-  getTasks(): void {
-    this.tasks = this.taskService.getTasks();
-  }
+  constructor(private http: HttpService) {}
 
   ngOnInit() {
-    this.getTasks();
-    this.crArr();
+    this.getTaskList();
   }
 
 }

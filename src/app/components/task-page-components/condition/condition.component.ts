@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {TaskModel} from '../../../models/task.model';
+import {UserTask} from '../../../models/userTask.model';
 
 @Component({
   selector: 'app-condition',
@@ -8,7 +8,7 @@ import {TaskModel} from '../../../models/task.model';
 })
 export class ConditionComponent implements OnInit {
 
-  @Input() curTaskCond: TaskModel;
+  @Input() currentTask: UserTask;
 
   constructor() { }
 

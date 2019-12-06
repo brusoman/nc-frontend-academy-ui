@@ -9,9 +9,7 @@ export interface TaskModel {
   attemt: number;
 }
 export class Task {
-  number: number;
-  section: number;
-  description: number;
-  attemptsMax: number;
-  taskName: string;
+  id: number;
+  name: string;
+  section: string;
 }

@@ -1,21 +1,16 @@
 export class UserTask {
-  attemptNumber: number;
-  code: string;
-  log: string;
-  progress: number;
-  taskDto: TaskDto;
+  name: string;
+  deadline: string;
+  condition: string;
+  bestScreen: string;
+  tries: number;
+  bestTry: string;
+  triesData: TryData[];
+}
+class TryData {
   time: string;
-  userTaskPK: UserTaskPK;
+  percent: number;
+  difference: string;
+  userScreen: string;
 }
-class TaskDto {
-  attemptsMax: number;
-  description: string;
-  id: number;
-  number: number;
-  section: string;
-  taskName: string;
-}
-class UserTaskPK {
-  taskId: number;
-  userId: number;
-}
+

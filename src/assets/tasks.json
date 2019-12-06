@@ -1,0 +1,21 @@
+{
+  "taskList": [
+    {
+      "id": 1,
+      "name": "firstTask",
+      "section": "basic"
+    }, {
+      "id": 2,
+      "name": "secondTask",
+      "section": "levelUp"
+    }, {
+      "id": 3,
+      "name": "thirdTask",
+      "section": "levelUp"
+    },{
+      "id": 4,
+      "name": "fourthTask",
+      "section": "advanced"
+    }
+  ]
+}

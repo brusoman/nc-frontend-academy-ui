@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {TaskModel} from '../../../models/task.model';
+import {UserTask} from '../../../models/userTask.model';
 
 @Component({
   selector: 'app-rating',
@@ -8,19 +8,19 @@ import {TaskModel} from '../../../models/task.model';
 })
 export class RatingComponent implements OnInit {
 
-  @Input() curTaskRait: TaskModel;
+  @Input() currentTask: UserTask;
 
   constructor() { }
-  i = 0;
   attempt: number[] = [];
   setAtt(): void {
-    while (this.i < 10) {
-      if (this.i < this.curTaskRait.attemt) {
-        this.attempt[this.i] = 1;
+    let i = 0;
+    while (i < 10) {
+      if (i < this.currentTask.triesData.length) {
+        this.attempt[i] = 1;
       } else {
-        this.attempt[this.i] = 0;
+        this.attempt[i] = 0;
       }
-      this.i++;
+      i++;
     }
   }
 

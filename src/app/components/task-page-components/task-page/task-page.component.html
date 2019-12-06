@@ -4,12 +4,12 @@
   <div>
     <app-list (outToTaskPage) = 'receiveFromList($event)'></app-list>
   </div>
-  <ng-container  *ngIf="!showInfo">
+  <ng-container class="box_condition" *ngIf="!showInfo">
     <div class="condition">
-      <app-condition [curTaskCond]="currentTask"></app-condition>
+      <app-condition [currentTask]="currentTask"></app-condition>
     </div>
     <div class="imagine">
-      <app-rating [curTaskRait]="currentTask"></app-rating>
+      <app-rating [currentTask]="currentTask"></app-rating>
     </div>
   </ng-container>
   <ng-container *ngIf="showInfo">
