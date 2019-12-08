@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {UserTask} from '../../../models/userTask.model';
 
 @Component({
   selector: 'app-tl-condition',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TlConditionComponent implements OnInit {
 
+  @Input() public currentTask: UserTask;
   constructor() { }
 
   ngOnInit() {

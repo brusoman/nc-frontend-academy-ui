@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {UserTask} from '../../../models/userTask.model';
 
 @Component({
   selector: 'app-tl-rating',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['../../../../assets/styles/components/task-load-components/tl-rating.component.less']
 })
 export class TlRatingComponent implements OnInit {
+
+  @Input() private currentTask: UserTask;
   differenceOpacity = false;
   Opacity() {
     const difference = document.querySelector('.rating_pictures_difference') as HTMLElement;

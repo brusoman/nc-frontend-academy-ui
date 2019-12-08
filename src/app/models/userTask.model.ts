@@ -7,7 +7,7 @@ export class UserTask {
   bestTry: string;
   triesData: TryData[];
 }
-class TryData {
+export class TryData {
   time: string;
   percent: number;
   difference: string;

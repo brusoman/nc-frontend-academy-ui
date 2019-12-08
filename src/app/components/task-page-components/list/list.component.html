@@ -5,7 +5,8 @@
       <clr-stack-label>Basic</clr-stack-label>
 
       <clr-stack-block  *ngFor="let item of basicTasks">
-        <clr-stack-label class="btn btn-link" routerLink="task-load">
+        <clr-stack-label class="btn btn-link"
+                         [routerLink]="['/task-load', item.id]" [queryParams]="{'currentTask': currentTaskJson}">
           {{item.name}}
         </clr-stack-label>
         <button class="btn btn-link" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</button>
@@ -17,7 +18,10 @@
       <clr-stack-label>Level up</clr-stack-label>
 
     <clr-stack-block  *ngFor="let item of levelUpTasks">
-        <clr-stack-label class="btn btn-link" routerLink="task-load">{{item.name}}</clr-stack-label>
+        <clr-stack-label class="btn btn-link"
+                         [routerLink]="['/task-load', item.id]" [queryParams]="currentTask">
+          {{item.name}}
+        </clr-stack-label>
       <button class="btn btn-link" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</button>
     </clr-stack-block>
 
@@ -28,7 +32,10 @@
       <clr-stack-label>Advanced</clr-stack-label>
 
       <clr-stack-block  *ngFor="let item of advancedTasks">
-        <clr-stack-label class="btn btn-link" routerLink="task-load">{{item.name}}</clr-stack-label>
+        <clr-stack-label class="btn btn-link"
+                         [routerLink]="['/task-load', item.id]" [queryParams]="currentTask">
+          {{item.name}}
+        </clr-stack-label>
         <button class="btn btn-link" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</button>
         <button class="btn btn-link" *ngIf="!isPressed" (click)="sendToTaskPage(0)">...</button>
       </clr-stack-block>

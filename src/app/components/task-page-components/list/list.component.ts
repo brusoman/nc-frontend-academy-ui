@@ -1,8 +1,7 @@
-import {Component, Output, OnInit, EventEmitter, Input} from '@angular/core';
+import {Component, Output, OnInit, EventEmitter} from '@angular/core';
 import {Task} from '../../../models/task.model';
 import {HttpService} from '../../../services/http.service';
 import {UserTask} from '../../../models/userTask.model';
-
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -11,13 +10,14 @@ import {UserTask} from '../../../models/userTask.model';
 export class ListComponent implements OnInit {
 
   @Output() public outToTaskPage = new EventEmitter();
+  @Output() public outToLoadPage = new EventEmitter();
   currentTask: UserTask;
   taskList: Task[];
   isPressed = true;
   basicTasks: Task[] = [];
   levelUpTasks: Task[] = [];
   advancedTasks: Task[] = [];
-
+  currentTaskJson: string = null;
   createTaskArrays() {
     let i = 0;
     while (i < this.taskList.length) {
@@ -56,6 +56,7 @@ export class ListComponent implements OnInit {
     this.http.getUserTask(taskId, 1).subscribe(
       (data) => {this.currentTask = data;
                  this.outToTaskPage.emit(this.currentTask);
+                 this.currentTaskJson = JSON.stringify(this.currentTask);
         });
   }
 

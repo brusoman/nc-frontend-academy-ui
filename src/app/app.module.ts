@@ -23,7 +23,7 @@ import { TlRatingComponent } from './components/task-load-components/tl-rating/t
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'task-load', component: TaskLoadComponent},
+  {path: 'task-load/:taskId', component: TaskLoadComponent},
   {path: 'tasks', component: TaskPageComponent},
   {path: 'settings', component: SettingsComponent},
   {path: '**', redirectTo: '/login'}
