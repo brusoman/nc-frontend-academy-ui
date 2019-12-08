@@ -6,10 +6,8 @@ import {ClarityModule} from '@clr/angular';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HeaderComponent} from './components/header/header.component';
 import {LoginComponent} from './components/login/login.component';
-import {TasksComponent} from './components/task-page-components/tasks/tasks.component';
 import {ListComponent} from './components/task-page-components/list/list.component';
 import {RouterModule, Routes} from '@angular/router';
-import {TaskModel} from './models/task.model';
 import { TaskPageComponent } from './components/task-page-components/task-page/task-page.component';
 import { ConditionComponent } from './components/task-page-components/condition/condition.component';
 import { RatingComponent } from './components/task-page-components/rating/rating.component';
@@ -38,7 +36,6 @@ const appRoutes: Routes = [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    TasksComponent,
     ListComponent,
     TaskPageComponent,
     ConditionComponent,

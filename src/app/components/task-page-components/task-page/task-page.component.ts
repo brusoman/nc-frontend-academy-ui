@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ListComponent } from '../list/list.component';
-import {TaskModel} from '../../../models/task.model';
-import {TaskService} from '../../../services/task.service';
 import {UserTask} from '../../../models/userTask.model';
 
 @Component({
@@ -14,7 +12,7 @@ export class TaskPageComponent implements OnInit {
   currentTask: UserTask;
   showInfo = true;
 
-  constructor(private taskService: TaskService) { }
+  constructor() { }
 
   receiveFromList(event) {
     this.currentTask = event;

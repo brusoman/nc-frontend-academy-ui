@@ -1,5 +1,5 @@
 import {Component, Output, OnInit, EventEmitter, Input} from '@angular/core';
-import {Task, TaskModel} from '../../../models/task.model';
+import {Task} from '../../../models/task.model';
 import {HttpService} from '../../../services/http.service';
 import {UserTask} from '../../../models/userTask.model';
 
