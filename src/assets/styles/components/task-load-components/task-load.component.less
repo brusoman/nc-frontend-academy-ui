@@ -1,22 +1,24 @@
-.horizontalTask{
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
+.task{
+  min-height: 89vh;
   display: grid;
-  grid-template-rows: 1fr 100px;
+  grid-template-rows: 1fr auto;
+  align-content: space-between;
 }
 
-.verticalTask{
-  display: flex;
-  flex-direction: row;
-  height: 100%;
+.task__condition-rating{
+  display: grid;
+  grid-template-columns: auto 1000px;
+  justify-content: space-around;
+  align-self: center;
 }
-.verticalTask app-tl-condition:nth-child(1){
-  flex: 1;
+.task__condition-rating__condition{
+  justify-self: center;
+  max-width: 480px;
+}
+.task__condition-rating__rating{
+  justify-self: center;
+}
+.task__sender{
+  height: 60px;
 }
 
-.verticalTask app-tl-rating:nth-child(2){
-  flex: 2;
-  margin-left: 20px;
-
-}

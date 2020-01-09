@@ -11,7 +11,7 @@ export class TlRatingComponent implements OnInit {
   @Input() private currentTask: UserTask;
   differenceOpacity = false;
   Opacity() {
-    const difference = document.querySelector('.rating_pictures_difference') as HTMLElement;
+    const difference = document.querySelector('.rating__pictures__difference') as HTMLElement;
     if (this.differenceOpacity === false) {
       difference.style.opacity = '0%';
       this.differenceOpacity = true;

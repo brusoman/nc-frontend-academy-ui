@@ -1,9 +1,9 @@
 .condition{
   display: grid;
-  grid-template-rows: 50px 30px 1fr;
+  grid-template-rows: auto auto auto;
 }
 
-.condition_task{
+.condition__task{
   background: #6896c3;
   border: 1px double #c8d7e7;
   border-radius: 10px 10px 0 0;
@@ -11,17 +11,18 @@
   text-align: center;
   font-weight: bold;
   font-size: medium;
+  min-height: 50px;
 }
-.condition_deadline{
+.condition__deadline{
   color: black;
   font-style: italic;
   background: #c8d7e7;
   border: 1px double #c8d7e7;
+  min-height: 30px;
 }
-.condition_text{
-  height: 100vh;
+.condition__text{
   color: black;
   border: 1px double #c8d7e7;
   border-radius: 0 0 10px 10px;
-
+  min-height: 490px;
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService} from '../../../services/http.service';
 
 @Component({
   selector: 'app-send-field',
@@ -7,7 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SendFieldComponent implements OnInit {
 
-  constructor() { }
+  fileToUpload: File = null;
+  fileName = '!Файл не загружен!';
+  handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);
+    this.fileName = files.item(0).name;
+  }
+  uploadFileToActivity() {
+    this.http.postFile(this.fileToUpload).subscribe(data => {
+      // do something, if upload success
+    }, error => {
+      console.log(error);
+    });
+  }
+  constructor(private http: HttpService) { }
 
   ngOnInit() {
   }

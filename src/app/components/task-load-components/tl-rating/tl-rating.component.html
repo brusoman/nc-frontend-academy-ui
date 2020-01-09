@@ -1,16 +1,16 @@
 <div class="rating">
-  <div class="rating_pictures">
+  <div class="rating__pictures">
     <div>
-      <img class="rating_pictures_difference" src="../../../../assets/images/landau.jpg" width="420">
-      <img class="rating_pictures_userPicture" src="../../../../assets/images/david.jpg" width="420">
+      <img class="rating__pictures__difference" src="../../../../assets/images/difference.jpg">
+      <img class="rating__pictures__userPicture" src="../../../../assets/images/userPicture.jpg">
     </div>
-    <img src="../../../../assets/images/landau.jpg" width="420">
-    <button class="btn btn-primary" (click)="Opacity()">Swap</button>
+    <img class ="rating__pictures__original" src="../../../../assets/images/original.jpg">
+    <button class="btn btn-primary rating__pictures__swap" (click)="Opacity()">Swap</button>
   </div>
-  <table class="table rating_table">
+  <table class="table rating__table">
     <thead>
     <tr>
-      <th class="dd">Количество попыток</th>
+      <th>Количество попыток</th>
       <th>Процент совпадения</th>
       <th>Последняя сдача</th>
     </tr>

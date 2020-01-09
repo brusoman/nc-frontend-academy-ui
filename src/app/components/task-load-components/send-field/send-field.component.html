@@ -1,5 +1,9 @@
 <div class="sender">
-  <input id="search_input" type="text" placeholder="Путь к файлу">
-  <button class="btn btn-primary">Выбрать файл</button>
-  <button class="btn btn-primary">Загрузить</button>
+  <input class="sender__file" type="file" id="sender__file" placeholder="Путь к файлу"
+         (change)="handleFileInput($event.target.files)">
+  <label for="sender__file" class="sender__file-wrapper">
+    <input class="sender__file-check" value=" Имя файла: {{fileName}}" readonly>
+    <div class="btn btn-primary sender__button">Выбрать файл</div>
+    <button class="btn btn-primary sender__button" (click)="uploadFileToActivity()">Загрузить</button>
+  </label>
 </div>
