@@ -12,7 +12,7 @@ export class ListComponent implements OnInit {
   @Output() public outToTaskPage = new EventEmitter();
   @Output() public outToLoadPage = new EventEmitter();
   currentTask: UserTask;
-  taskList: Task[];
+  taskList: Task[] = [];
   isPressed = true;
   basicTasks: Task[] = [];
   levelUpTasks: Task[] = [];
@@ -48,7 +48,7 @@ export class ListComponent implements OnInit {
     this.isPressed = true;
   }
   getTaskList() {
-    this.http.getTask().subscribe(
+    this.http.getTasksList().subscribe(
       (data) => {this.taskList = data;
                  this.createTaskArrays(); }
     );
@@ -66,5 +66,4 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.getTaskList();
   }
-
 }

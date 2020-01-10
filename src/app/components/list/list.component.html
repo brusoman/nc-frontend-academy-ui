@@ -1,12 +1,13 @@
-<clr-stack-view>
+<div class="parent">
+<clr-stack-view class="child">
   <clr-stack-header>TaskModel</clr-stack-header>
 
   <clr-stack-block>
-      <clr-stack-label>Basic</clr-stack-label>
+      <clr-stack-label>Basic {{tasks[0].taskName}} </clr-stack-label>
 
       <clr-stack-block  *ngFor="let item of basic">
         <clr-stack-label>
-          {{item.name}}
+          {{item.taskName}}
         </clr-stack-label>
         <button class="btn btn-link" *ngIf="isPressed" (click)='sendToTaskPage(item.id)'>...</button>
         <button class="btn btn-link" *ngIf="!isPressed" (click)="sendToTaskPage(0)">...</button>
@@ -18,7 +19,7 @@
       <clr-stack-label>Level up</clr-stack-label>
 
     <clr-stack-block  *ngFor="let item of levelUp">
-        <clr-stack-label>{{item.name}}</clr-stack-label>
+        <clr-stack-label>{{item.taskName}}</clr-stack-label>
       <button class="btn btn-link" *ngIf="isPressed" (click)='sendToTaskPage(item.id)'>...</button>
       <button class="btn btn-link" *ngIf="!isPressed" (click)="sendToTaskPage(0)">...</button>
     </clr-stack-block>
@@ -30,11 +31,11 @@
       <clr-stack-label>Advanced</clr-stack-label>
 
       <clr-stack-block  *ngFor="let item of advanc">
-        <clr-stack-label>{{item.name}}</clr-stack-label>
+        <clr-stack-label>{{item.taskName}}</clr-stack-label>
         <button class="btn btn-link" *ngIf="isPressed" (click)='sendToTaskPage(item.id)'>...</button>
         <button class="btn btn-link" *ngIf="!isPressed" (click)="sendToTaskPage(0)">...</button>
       </clr-stack-block>
 
     </clr-stack-block>
 </clr-stack-view>
-
+</div>

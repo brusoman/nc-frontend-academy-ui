@@ -26,7 +26,7 @@ export class TaskPageComponent implements OnInit {
   }
   recieveFromList(evnt) {
     this.idPage = evnt;
-    if (evnt === 0){
+    if (evnt === 0) {
       this.showInfo = true;
     } else {
       this.showInfo = false;

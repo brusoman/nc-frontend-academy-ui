@@ -1,47 +1,37 @@
 import { Component, Output, OnInit, EventEmitter } from '@angular/core';
-import {TaskModel} from '../../models/task.model';
+import {Task, TaskModel} from '../../models/task.model';
 import {TaskService} from '../../services/task.service';
+import { HttpService} from '../../services/http.service';
 
 @Component({
   selector: 'app-list',
-  templateUrl: './list.component.html'
+  templateUrl: './list.component.html',
+  providers: [HttpService]
 })
 export class ListComponent implements OnInit {
 
   @Output() public outToTaskPage = new EventEmitter();
 
-  tasks: TaskModel[];
-  basic: TaskModel[] = [];
-  levelUp: TaskModel[] = [];
-  advanc: TaskModel[] = [];
-  idList: number = 0;
+  tasks: Task[] = [];
+  basic: Task[] = [];
+  levelUp: Task[] = [];
+  advanc: Task[] = [];
 
   isPressed: boolean = true;
 
   crArr(): void {
-    let i: number = 0;
-    let adv: number = 0;
-    let bas: number = 0;
-    let lev: number = 0;
-    while (i < 6) {
-      switch (this.tasks[i].level) {
-        case 1 : {
+    let i = 0;
+    let adv = 0;
+    let bas = 0;
+    let lev = 0;
+    while (i < 4) {
+      if (this.tasks[i].id === 101) {
           this.basic[bas] = this.tasks[i];
           bas++;
-          break;
-        }
-        case 2 : {
-          this.levelUp[lev] = this.tasks[i];
-          lev++;
-          break;
-        }
-        case 3 : {
-          this.advanc[adv] = this.tasks[i];
-          adv++;
-          break;
-        }
+          i++;
+        } else {
+        i++;
       }
-      i++;
     }
   }
 
@@ -50,13 +40,10 @@ export class ListComponent implements OnInit {
     this.outToTaskPage.emit(idList);
   }
 
-  constructor(private taskService: TaskService) {}
-  getTasks(): void {
-    this.tasks = this.taskService.getTasks();
-  }
+  constructor(private httpService: HttpService) {}
 
   ngOnInit() {
-    this.getTasks();
+    this.httpService.getTasksList().subscribe(data => this.tasks = data['Task_list']);
     this.crArr();
   }
 

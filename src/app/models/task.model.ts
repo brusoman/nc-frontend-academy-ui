@@ -1,3 +1,24 @@
+export class Task {
+  id: number;
+  taskName: string;
+  section: string;
+}
+
+export class TaskDescription {
+  description: string;
+  deadLine: string;
+  name: string;
+  urlSample: string;
+}
+
+export class Attempt {
+  time: string;
+  progress: number;
+  urlUserPicture: string;
+  urlSamplePicture: string;
+}
+
+
 export interface TaskModel {
   id: number;
   num: number;
@@ -7,11 +28,4 @@ export interface TaskModel {
   level: number;
   percent: number;
   attemt: number;
-}
-export class Task {
-  number: number;
-  section: number;
-  description: number;
-  attemptsMax: number;
-  taskName: string;
 }

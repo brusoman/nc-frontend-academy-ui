@@ -5,7 +5,7 @@ import {UserData} from '../models/userData.model';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {UserTask} from '../models/userTask.model';
-import {Task} from '../models/task.model';
+import {Attempt, Task, TaskDescription} from '../models/task.model';
 
 @Injectable()
 export class HttpService {
@@ -50,11 +50,46 @@ export class HttpService {
     }));
   }
 
-  getTask(taskId: number): Observable<Task>  {
-    return this.http.get(this.url + '/tasks/' + taskId).pipe(map((task: any) => {
-      return {number: task.number, section: task.number, description: task.description,
-        attemptsMax: task.attempts_max, taskName: task.task_name};
+  getTasksList(): Observable<Task[]>  {
+    return this.http.get( 'assets/taskList.json').pipe(map(data => {
+      let tasksList = data["Task_list"];
+      return tasksList.map(function (task: any) {
+        return {
+          id: task.id,
+          taskName: task.name,
+          section: task.section
+        };
+      });
     }));
+  }
+
+  getAttempts(userId: number, taskId: number, autToken: number): Observable<Attempt[]> {
+    return this.http.get('assets/att.json').pipe(map(data => {
+      let attArr = data["attempts"];
+      return attArr.map(function (attempt: any) {
+        return {
+          time: attempt.time,
+          progress: attempt.progress,
+          urlUserPicture: attempt.urlUserPicture,
+          urlSamplePicture: attempt.urlSamplePicture
+        };
+        });
+    }));
+  }
+
+  getDescription(taskId: number, autToken: number): Observable<TaskDescription> {
+    return this.http.get( 'assets/descr.json').pipe(map( (descr: any) => {
+        return {
+          description: descr.description,
+          deadLine: descr.deadLine,
+          name: descr.name,
+          urlSample: descr.urlSample
+        };
+      }));
+  }
+
+  getData() {
+    return this.http.get('assets/taskList.json')
   }
 }
 

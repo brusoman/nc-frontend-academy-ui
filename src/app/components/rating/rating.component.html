@@ -1,10 +1,41 @@
-<div class="alert alert-app-level">
-  Rating
-</div>
-<div>
-  <p>Your mark: {{curTaskRait.mrk}}</p>
-</div>
-<div>
-  <clr-icon shape="star"></clr-icon>
-  <clr-icon shape="star" class="is-solid"></clr-icon>
-</div>
+ <div class="parent">
+  <div class="alert alert-app-level">
+    Rating
+  </div>
+   <div class="imdn">
+     <img src="../../../assets/images/david.jpg" width="250"
+          height="357" alt="logo">
+   </div>
+   <div class="imdn2">
+     <img src="../../../assets/images/landau.jpg" width="250"
+          height="357" alt="logo">
+   </div>
+   <div class="swaper">
+    <button class="btn btn-primary">Swap</button>
+   </div>
+  <div class="pass-stars">
+    <p>Количество попыток</p>
+    <div *ngFor="let item of attemt" class="stars">
+      <clr-icon *ngIf="item === 0" shape="star"></clr-icon>
+      <clr-icon *ngIf="item === 1" shape="star" class="is-solid"></clr-icon>
+    </div>
+  </div>
+  <div class="pass-table">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="left">Время сдачи</th>
+          <th class="left">Процесс совпадения</th>
+        </tr>
+      </thead>
+        <tbody>
+          <tr>
+            <td class="left">
+              <button class="btn btn-link">10.11.2019</button>
+            </td>
+            <td class="left">{{curTaskRait.percent}}</td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+ </div>
