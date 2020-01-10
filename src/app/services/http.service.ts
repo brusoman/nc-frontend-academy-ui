@@ -41,19 +41,18 @@ export class HttpService {
   }
 
   getUserTask(taskId: number, userId: number): Observable<UserTask>  {
-    return this.http.get(this.url + '/tasks/task?taskId=' + taskId +
-    '&userId=' + userId).pipe(map((task: any) => {
-      return {attemptNumber: task.attempt_number, code: task.code, log: task.log, progress: task.progress,
-        taskDto: {attemptsMax: task['taskDto'].attempts_max, description: task['taskDto'].description,
-          id: task['taskDto'].id, number: task['taskDto'].number, section: task['taskDto'].section, taskName: task['taskDto'].task_name},
-        time: task.time, userTaskPK: {taskId: task['userTaskPK'].taskId, userId: task['userTaskPK'].userId}};
+    return this.http.get('/assets/userTask.json').pipe(map((task: any) => {
+      return {name: task.name, deadline: task.deadline, condition: task.condition, bestScreen: task.bestScreen,
+        tries: task.tries, bestTry: task.bestTry, triesData: task['triesData']};
     }));
   }
 
-  getTask(taskId: number): Observable<Task>  {
-    return this.http.get(this.url + '/tasks/' + taskId).pipe(map((task: any) => {
-      return {number: task.number, section: task.number, description: task.description,
-        attemptsMax: task.attempts_max, taskName: task.task_name};
+  getTask(): Observable<Task[]>  {
+    return this.http.get('/assets/tasks.json').pipe(map(data => {
+      const taskList = data['taskList'];
+      return taskList.map((task: any) => {
+        return {id: task.id, name: task.name, section: task.section};
+      });
     }));
   }
 }

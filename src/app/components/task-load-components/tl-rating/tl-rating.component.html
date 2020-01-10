@@ -1,0 +1,26 @@
+<div class="rating">
+  <div class="rating_pictures">
+    <div>
+      <img class="rating_pictures_difference" src="../../../../assets/images/landau.jpg" width="420">
+      <img class="rating_pictures_userPicture" src="../../../../assets/images/david.jpg" width="420">
+    </div>
+    <img src="../../../../assets/images/landau.jpg" width="420">
+    <button class="btn btn-primary" (click)="Opacity()">Swap</button>
+  </div>
+  <table class="table rating_table">
+    <thead>
+    <tr>
+      <th class="dd">Количество попыток</th>
+      <th>Процент совпадения</th>
+      <th>Последняя сдача</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr style="background-color: #fafafa">
+      <td>{{currentTask.tries}}</td>
+      <td>{{currentTask.triesData[0].percent}}</td>
+      <td>{{currentTask.triesData[0].time}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
