@@ -7,9 +7,16 @@
     </a>
   </div>
   <div class="header-actions">
-    <a href="javascript://" class="nav-link nav-icon-text">
-      <clr-icon shape="user"></clr-icon>
-      <span class="nav-text">Log In</span>
-    </a>
+    <clr-dropdown>
+      <button class="nav-icon" clrDropdownTrigger aria-label="toggle settings menu">
+        <clr-icon shape="cog"></clr-icon>
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+        <a clrDropdownItem routerLink="tasks">Задачи</a>
+        <a clrDropdownItem routerLink="settings">Настройки</a>
+        <a clrDropdownItem routerLink="task-load">Выход</a>
+      </clr-dropdown-menu>
+    </clr-dropdown>
   </div>
 </header>

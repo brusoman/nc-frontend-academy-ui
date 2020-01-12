@@ -1,0 +1,21 @@
+{
+  "name": "firstTask",
+  "deadline": "28.06.2020",
+  "condition": "condition",
+  "bestScreen": "bestScreen",
+  "tries": 2,
+  "bestTry": "bestTry",
+  "triesData": [
+    {
+      "time": "25.06.2020",
+      "percent": 35,
+      "difference": "difference",
+      "userScreen": "userScreen"
+    },{
+      "time": "26.06.2020",
+      "percent": 50,
+      "difference": "difference",
+      "userScreen": "userScreen"
+    }
+  ]
+}
