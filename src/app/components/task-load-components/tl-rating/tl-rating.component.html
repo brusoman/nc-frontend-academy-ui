@@ -7,19 +7,19 @@
     <img class ="rating__pictures__original" src="../../../../assets/images/original.jpg">
     <button class="btn btn-primary rating__pictures__swap" (click)="Opacity()">Swap</button>
   </div>
-  <table class="table rating__table">
+  <table class="table table-compact rating__table">
     <thead>
     <tr>
-      <th>Количество попыток</th>
-      <th>Процент совпадения</th>
-      <th>Последняя сдача</th>
+      <th class="rating__table__cell">Количество попыток</th>
+      <th class="rating__table__cell_middle">Процент совпадения</th>
+      <th class="rating__table__cell">Последняя сдача</th>
     </tr>
     </thead>
-    <tbody>
-    <tr style="background-color: #fafafa">
-      <td>{{currentTask.tries}}</td>
-      <td>{{currentTask.triesData[0].percent}}</td>
-      <td>{{currentTask.triesData[0].time}}</td>
+    <tbody *ngFor="let item of currentTask.triesData">
+    <tr>
+      <td class="rating__table__cell">{{currentTask.tries}}</td>
+      <td class="rating__table__cell_middle">{{item.percent}}</td>
+      <td class="rating__table__cell">{{item.time}}</td>
     </tr>
     </tbody>
   </table>

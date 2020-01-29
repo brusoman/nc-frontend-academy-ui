@@ -1,11 +1,9 @@
 .rating{
   display: grid;
-  grid-template-rows: 470px 100px;
-  button:hover{background: rgb(0, 37, 56)
-  };
+  grid-template-rows: auto auto;
+  button:hover{background: rgb(0, 37, 56)};
 }
 .rating__pictures{
-  margin-top: 20px;
   display: grid;
   grid-template-columns: 490px 490px;
   align-self: center;
@@ -26,7 +24,10 @@
 }
 
 .rating__table{
-  align-self: end;
+  margin: 0;
+  align-self: center;
+  border: none;
+  box-shadow: 3px 3px 1px rgba(200, 200, 200, 0.2);
 }
 .rating__pictures__swap{
   border: none;
@@ -35,5 +36,13 @@
   box-shadow: 2px 2px 1px rgba(200, 200, 200, 0.5);
   font-weight: bold;
   justify-self: center;
+}
+.rating__table__cell{
+  border: 1px solid #cbcbcb;
+}
+.rating__table__cell_middle{
+  border: 1px solid #cbcbcb;
+  border-left: none;
+  border-right: none;
 }
 

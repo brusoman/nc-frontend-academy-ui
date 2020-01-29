@@ -1,44 +1,76 @@
+.task-page{
+  padding-top: 60px;
+}
 .box {
-  display: inline-flex;
-  justify-content: center;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  justify-items: center;
 }
-
-.box div:nth-child(1) {
-  flex: 1;
+.box__list{
+  width: 240px;
+  justify-self: center;
+  align-self: start;
+  margin-top: 30px;
 }
-
-.box div:nth-child(2) {
-  flex: 1;
-}
-
-.box div:nth-child(3) {
-  flex: 1;
-}
-
-
-
-.condition {
-  height:820px;
-  border-left:1px solid #ccc7c3;
-}
-.imagine {
-  height:820px;
-  border-left:1px solid #ccc7c3;
-}
-
-.box2 {
+.box__welcome{
+  align-self: stretch;
+  padding-left: 223px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("~src/assets/images/NetcrackerBack.png");
+  background-size: 50px;
+  height: 100vh;
 }
-
-.box2 div:nth-child(1) {
-  flex: 1;
+.box__welcome__text{
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
-
-.box2 div:nth-child(2) {
-  flex: 2;
+.box__condition-rating{
   border-left:1px solid #ccc7c3;
-  height:820px;
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
+.box__template{
+  border-left:1px solid #ccc7c3;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.box__template__condition {
+  display: grid;
+  grid-template-rows: 30px 30px 200px;
+}
+.box__template__condition__header{
+ background-color: #6896C3;
+  opacity: 85%;
+}
+.box__template__condition__deadline{
+  background-color: #c8d7e7;
+  opacity: 85%;
+}
+.box__template__condition__condition{
+  background-color: #fafafa;
+  opacity: 85%;
+}
+.box__template__rating {
+
+}
+.box__template__rating__header{
+  background-color: #6896C3;
+  opacity: 85%;
+}
+.box__template__rating__content{
+  height: 434px;
+  background-color: #fafafa;
+  opacity: 90%;
+  text-align: center;
+}
+.box__template__rating__content__image{
+
+}
+.box2 {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+}
+
 

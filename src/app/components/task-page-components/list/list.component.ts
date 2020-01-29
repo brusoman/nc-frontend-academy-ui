@@ -39,8 +39,6 @@ export class ListComponent implements OnInit {
         }
       }
     }
-
-
   }
   sendToTaskPage(idList: number) {
     this.getUserTask(idList);
