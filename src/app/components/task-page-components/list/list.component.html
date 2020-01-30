@@ -1,46 +1,38 @@
-<div class="parent">
-<clr-stack-view class="child">
-  <clr-stack-header>TaskModel</clr-stack-header>
-  <clr-stack-block>
-      <clr-stack-label>Basic</clr-stack-label>
-
-      <clr-stack-block  *ngFor="let item of basicTasks">
-        <clr-stack-label class="btn btn-link"
-                         [routerLink]="['/task-load', item.id]" [queryParams]="{'currentTask': currentTaskJson}">
+<clr-vertical-nav>
+  <clr-vertical-nav-group>
+    Basic
+    <clr-vertical-nav-group-children *ngFor="let item of basicTasks">
+      <div class="nav__group">
+        <div class="nav__group__name" [routerLink]="['/task-load', item.id]" [queryParams]="currentTask">
           {{item.name}}
-        </clr-stack-label>
-        <button class="btn btn-link" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</button>
-      </clr-stack-block>
-
-  </clr-stack-block>
-
-  <clr-stack-block>
-      <clr-stack-label>Level up</clr-stack-label>
-
-    <clr-stack-block  *ngFor="let item of levelUpTasks">
-        <clr-stack-label class="btn btn-link"
-                         [routerLink]="['/task-load', item.id]" [queryParams]="currentTask">
+        </div>
+        <div class="nav__group__options" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</div>
+      </div>
+    </clr-vertical-nav-group-children>
+  </clr-vertical-nav-group>
+  <clr-vertical-nav-group>
+    LevelUp
+    <clr-vertical-nav-group-children *ngFor="let item of levelUpTasks">
+      <div class="nav__group">
+        <div class="nav__group__name" [routerLink]="['/task-load', item.id]" [queryParams]="currentTask">
           {{item.name}}
-        </clr-stack-label>
-      <button class="btn btn-link" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</button>
-    </clr-stack-block>
-
-  </clr-stack-block>
-
-
-    <clr-stack-block>
-      <clr-stack-label>Advanced</clr-stack-label>
-
-      <clr-stack-block  *ngFor="let item of advancedTasks">
-        <clr-stack-label class="btn btn-link"
-                         [routerLink]="['/task-load', item.id]" [queryParams]="currentTask">
+        </div>
+        <div class="nav__group__options" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</div>
+      </div>
+    </clr-vertical-nav-group-children>
+  </clr-vertical-nav-group>
+  <clr-vertical-nav-group>
+    Advanced
+    <clr-vertical-nav-group-children *ngFor="let item of advancedTasks">
+      <div class="nav__group">
+        <div class="nav__group__name" [routerLink]="['/task-load', item.id]" [queryParams]="currentTask">
           {{item.name}}
-        </clr-stack-label>
-        <button class="btn btn-link" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</button>
-        <button class="btn btn-link" *ngIf="!isPressed" (click)="sendToTaskPage(0)">...</button>
-      </clr-stack-block>
-
-    </clr-stack-block>
-</clr-stack-view>
-</div>
-
+        </div>
+        <div class="nav__group__options" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</div>
+      </div>
+    </clr-vertical-nav-group-children>
+  </clr-vertical-nav-group>
+  <a clrVerticalNavLink (click)="sendToTaskPage(null)">
+    Close
+  </a>
+</clr-vertical-nav>

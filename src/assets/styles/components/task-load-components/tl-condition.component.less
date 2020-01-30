@@ -1,27 +1,34 @@
 .condition{
   display: grid;
-  grid-template-rows: 50px 30px 1fr;
+  grid-template-rows: auto auto auto;
+  border-radius: 10px;
+  box-shadow: 3px 3px 1px rgba(200, 200, 200, 0.2);
 }
 
-.condition_task{
+.condition__task{
   background: #6896c3;
-  border: 1px double #c8d7e7;
+  border: 1px solid #cbcbcb;
+  border-bottom: none;
   border-radius: 10px 10px 0 0;
   color: black;
   text-align: center;
   font-weight: bold;
   font-size: medium;
+  min-height: 50px;
 }
-.condition_deadline{
+.condition__deadline{
   color: black;
   font-style: italic;
   background: #c8d7e7;
-  border: 1px double #c8d7e7;
+  border: 1px solid #cbcbcb;
+  border-bottom: none;
+  border-top: none;
+  min-height: 30px;
 }
-.condition_text{
-  height: 100vh;
+.condition__text{
   color: black;
-  border: 1px double #c8d7e7;
+  border: 1px solid #cbcbcb;
+  border-top: none;
   border-radius: 0 0 10px 10px;
-
+  min-height: 515px;
 }

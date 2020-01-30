@@ -1,39 +1,38 @@
- <div class="parent">
-  <div class="alert alert-app-level">
+<div class="rating">
+  <div class="rating__header">
     Rating
   </div>
-   <div class="imdn">
-     <img src="../../../../assets/images/david.jpg" width="250"
-          height="357" alt="logo">
-   </div>
-   <div class="imdn2">
-     <img src="../../../../assets/images/landau.jpg" width="250"
-          height="357" alt="logo">
-   </div>
-   <div class="swaper">
-    <button class="btn btn-primary">Swap</button>
-   </div>
-  <div class="pass-stars">
-    <p>Количество попыток</p>
-    <div *ngFor="let item of attempt" class="stars">
-      <clr-icon *ngIf="item === 0" shape="star"></clr-icon>
-      <clr-icon *ngIf="item === 1" shape="star" class="is-solid"></clr-icon>
+  <div class="rating__pictures">
+    <div>
+      <img class="rating__pictures__difference" src="../../../../assets/images/difference.jpg" alt="logo">
+      <img class="rating__pictures__userPicture" src="../../../../assets/images/userPicture.jpg" alt="logo">
+    </div>
+    <img class="rating__pictures__original" src="../../../../assets/images/original.jpg" alt="logo">
+    <button class="btn btn-primary rating__pictures__swap" (click)="Opacity()">Swap</button>
+  </div>
+  <div>
+    <div class="rating__table">
+      <table class="table table-compact">
+        <thead>
+        <tr>
+          <th>Время сдачи</th>
+          <th>Процент совпадения</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let item of currentTask.triesData">
+        <tr>
+          <td>{{item.time}}</td>
+          <td>{{item.percent}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="rating__passes">
+      <p>Количество попыток</p>
+      <div *ngFor="let item of attempt" class="rating__passes__stars">
+        <clr-icon *ngIf="item === 0" shape="star"></clr-icon>
+        <clr-icon *ngIf="item === 1" shape="star" class="rating__passes__stars_gold"></clr-icon>
+      </div>
     </div>
   </div>
-  <div class="pass-table">
-    <table class="table">
-      <thead>
-        <tr>
-          <th class="left">Время сдачи</th>
-          <th class="left">Процент совпадения</th>
-        </tr>
-      </thead>
-        <tbody>
-          <tr>
-            <td class="left" class="btn btn-link">10.11.2019</td>
-            <td class="left">{{currentTask.triesData[0].percent}}</td>
-          </tr>
-        </tbody>
-    </table>
-  </div>
- </div>
+</div>

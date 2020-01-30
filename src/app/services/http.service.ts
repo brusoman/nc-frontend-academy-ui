@@ -55,6 +55,12 @@ export class HttpService {
       });
     }));
   }
+  postFile(fileToUpload: File) {
+    const endpoint = 'your-destination-url';
+    const formData: FormData = new FormData();
+    formData.append('fileKey', fileToUpload, fileToUpload.name);
+    return this.http.post(endpoint, formData);
+  }
 }
 
 

@@ -1,16 +1,29 @@
-.sender{
+.sender__file-wrapper{
   width: 100%;
-  margin-top: 20px;
-  border: 1px double black;
-  border-radius: 10px;
   display: inline-grid;
-  grid-template-columns: 5fr 1fr 1fr;
+  grid-template-columns: 3fr 1fr 1fr;
   justify-content: center;
   align-items: center;
-
+  button:hover{background: rgb(0, 37, 56)}
+  div:hover{background: rgb(0, 37, 56)}
 }
-.sender input:nth-child(1){
-  width: 95%;
-  border-radius: 5px;
+
+.sender__button{
+  border: none;
+  background-color: #6895c2;
+  color: #fafafa;
+  box-shadow: 2px 2px 1px rgba(200, 200, 200, 0.5);
+  font-weight: bold;
+}
+
+.sender__file{
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+.sender__file-check{
+  width: 97%;
   justify-self: center;
+  border-radius: 5px;
+  height: 35px;
 }

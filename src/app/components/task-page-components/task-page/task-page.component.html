@@ -1,31 +1,34 @@
-<div class="box"
-[class.box]="!showInfo"
-[class.box2]="showInfo">
-  <div>
-    <app-list (outToTaskPage) = 'receiveFromList($event)'></app-list>
-  </div>
-  <ng-container class="box_condition" *ngIf="!showInfo">
-    <div class="condition">
-      <app-condition [currentTask]="currentTask"></app-condition>
+<div class="task-page">
+  <div class="box"
+       [class.box]="!showInfo"
+       [class.box2]="showInfo">
+    <div class="box__list">
+      <app-list (outToTaskPage)='receiveFromList($event)'></app-list>
     </div>
-    <div class="imagine">
-      <app-rating [currentTask]="currentTask"></app-rating>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="showInfo">
-    <div>
-      <div class="welcome">
-        <div class="welcome__text">
-          <h1>Netcracker Front-end Academy</h1>
-          <h3>Improve and test your developer skills!</h3>
-          <li>With Front-end Academy, you can practice coding without a tutor. Your code is checked online in many ways.</li>
-          <li>Our tasks are complicated as compared with other services. After them, you will be ready for projects with a mentor.</li>
-          <li>Our tasks give you real-life skills which you can't get neither by doing such projects nor by preparing for exams.</li>
+    <ng-container *ngIf="!showInfo">
+      <div class="box__condition-rating">
+        <div class="box__condition-rating__condition">
+          <app-condition [currentTask]="currentTask"></app-condition>
         </div>
-        <img src="../../../../assets/images/NetcrackerLogo.png" alt="logo">
+        <div class="box__condition-rating__rating">
+          <app-rating [currentTask]="currentTask"></app-rating>
+        </div>
       </div>
-    </div>
-  </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="showInfo">
+      <div class="box__template">
+        <div class="box__template__condition">
+          <div class="box__template__condition__header"></div>
+          <div class="box__template__condition__deadline"></div>
+          <div class="box__template__condition__condition"></div>
+        </div>
+        <div class="box__template__rating">
+          <div class="box__template__rating__content">
+            <img class="box__template__rating__content__image" src="../../../../assets/images/NetcrackerLogo.png">
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
 </div>
-
-

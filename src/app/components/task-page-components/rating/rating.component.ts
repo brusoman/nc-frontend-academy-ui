@@ -9,7 +9,7 @@ import {UserTask} from '../../../models/userTask.model';
 export class RatingComponent implements OnInit {
 
   @Input() currentTask: UserTask;
-
+  differenceOpacity = false;
   constructor() { }
   attempt: number[] = [];
   setAtt(): void {
@@ -21,6 +21,16 @@ export class RatingComponent implements OnInit {
         this.attempt[i] = 0;
       }
       i++;
+    }
+  }
+  Opacity() {
+    const difference = document.querySelector('.rating__pictures__difference') as HTMLElement;
+    if (this.differenceOpacity === false) {
+      difference.style.opacity = '0%';
+      this.differenceOpacity = true;
+    } else {
+      difference.style.opacity = '100%';
+      this.differenceOpacity = false;
     }
   }
 

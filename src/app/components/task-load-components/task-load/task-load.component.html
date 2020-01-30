@@ -1,8 +1,8 @@
-<div class="horizontalTask">
-<div class="verticalTask">
-  <app-tl-condition [currentTask]="currentTask"></app-tl-condition>
-  <app-tl-rating [currentTask]="currentTask"></app-tl-rating>
-</div>
-<app-send-field></app-send-field>
+<div class="task">
+  <div class="task__condition-rating">
+    <app-tl-condition class="task__condition-rating__condition" [currentTask]="currentTask"></app-tl-condition>
+    <app-tl-rating class="task__condition-rating__rating" [currentTask]="currentTask"></app-tl-rating>
+  </div>
+  <app-send-field class="task__sender"></app-send-field>
 </div>
 
