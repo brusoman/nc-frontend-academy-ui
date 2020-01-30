@@ -40,10 +40,10 @@ export class ListComponent implements OnInit {
         }
       }
     }
-
-
   }
-  sendToTaskPage(idList: number): void {
+
+
+  sendToTaskPage(idList: number) {
     this.getUserTask(idList);
     this.isPressed = true;
   }

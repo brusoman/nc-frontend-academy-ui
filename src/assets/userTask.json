@@ -1,0 +1,46 @@
+{
+  "name": "Пересоздайте Giphy с собственным API",
+  "deadline": "28.06.2020",
+  "condition": "Написать веб-приложение, которое показывает гифки на странице, с использованием пользовательского ввода для поиска и API Giphy.\n\nКогда освоите манипулирование с объектной моделью документа и возьмётесь за работу с обыкновенными JavaScript или jQuery, рекомендуем начать изучение шаблонов данных и показывать их в дереве DOM.\n\nДля старта разработайте начальное приложение – базовое воссоздание сайта Giphy с использованием Giphy API. Нативный API подходит для начинающих, потому что не требует никакого ключа API, и вам не придётся беспокоиться о конфигурации при попытке запросить данные. ",
+  "bestScreen": "bestScreen",
+  "tries": 2,
+  "bestTry": "bestTry",
+  "triesData": [
+    {
+      "time": "25.06.2020",
+      "percent": 35,
+      "difference": "difference",
+      "userScreen": "userScreen"
+    },{
+      "time": "26.06.2020",
+      "percent": 50,
+      "difference": "difference",
+      "userScreen": "userScreen"
+    },{
+      "time": "26.06.2020",
+      "percent": 50,
+      "difference": "difference",
+      "userScreen": "userScreen"
+    },{
+      "time": "26.06.2020",
+      "percent": 50,
+      "difference": "difference",
+      "userScreen": "userScreen"
+    },{
+      "time": "26.06.2020",
+      "percent": 50,
+      "difference": "difference",
+      "userScreen": "userScreen"
+    },{
+      "time": "26.06.2020",
+      "percent": 50,
+      "difference": "difference",
+      "userScreen": "userScreen"
+    },{
+      "time": "26.06.2020",
+      "percent": 50,
+      "difference": "difference",
+      "userScreen": "userScreen"
+    }
+  ]
+}
