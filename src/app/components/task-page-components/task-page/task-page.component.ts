@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ListComponent } from '../list/list.component';
 import {UserTask} from '../../../models/userTask.model';
 
 @Component({
   selector: 'app-task-page',
-  templateUrl: './task-page.component.html',
-  styleUrls: ['../../../../assets/styles/components/task-page-components/task-page.component.less']
+  templateUrl: './task-page.component.html'/*,
+  styleUrls: ['../../../../assets/styles/components/task-page-components/task-page.component.less']*/
 })
 export class TaskPageComponent implements OnInit {
 
