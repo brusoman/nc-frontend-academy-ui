@@ -1,0 +1,18 @@
+{
+  "attempts": [
+    {
+      "time": "12.01.2020",
+      "progress": "your progress"
+    },
+    {
+      "time": "2.05.2010",
+      "progress": "your progress 2"
+    },
+    {
+      "time": "12.01.2020",
+      "progress": "your progress",
+      "urlUserPicture": "http://url1",
+      "urlSamplePiture": "http://UrL2"
+    }
+  ]
+}
