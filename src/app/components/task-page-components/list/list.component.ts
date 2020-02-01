@@ -2,6 +2,7 @@ import {Component, Output, OnInit, EventEmitter} from '@angular/core';
 import {Task} from '../../../models/task.model';
 import {HttpService} from '../../../services/http.service';
 import {UserTask} from '../../../models/userTask.model';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',

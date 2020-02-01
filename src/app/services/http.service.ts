@@ -4,7 +4,7 @@ import {User} from '../models/user.model';
 import {UserData} from '../models/userData.model';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {UserTask} from '../models/userTask.model';
+import {UserTask, TryData, TaskDescription} from '../models/userTask.model';
 import {Task} from '../models/task.model';
 
 @Injectable()
@@ -61,6 +61,33 @@ export class HttpService {
     formData.append('fileKey', fileToUpload, fileToUpload.name);
     return this.http.post(endpoint, formData);
   }
+
+  getAttempts(userId: number, taskId: number, autToken: number): Observable<TryData[]> {
+    return this.http.get('assets/att.json').pipe(map(data => {
+      let attArr = data["attempts"];
+      return attArr.map(function (attempt: any) {
+        return {
+          time: attempt.time,
+          progress: attempt.progress,
+          urlUserPicture: attempt.urlUserPicture,
+          urlSamplePicture: attempt.urlSamplePicture
+        };
+      });
+    }));
+  }
+
+  getDescription(taskId: number, autToken: number): Observable<TaskDescription> {
+    return this.http.get( 'assets/descr.json').pipe(map( (descr: any) => {
+      return {
+        description: descr.description,
+        deadLine: descr.deadLine,
+        name: descr.name,
+        urlSample: descr.urlSample
+      };
+    }));
+  }
+
+
 }
 
 

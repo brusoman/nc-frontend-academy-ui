@@ -10,7 +10,15 @@ export class UserTask {
 
 export class TryData {
   time: string;
-  percent: number;
-  difference: string;
-  userScreen: string;
+  progress: number;
+  urlSamplePicture: string;
+  urlUserPicture: string;
+}
+
+export class TaskDescription {
+  description: string;
+  deadLine: string;
+  name: string;
+  urlSample: string;
+
 }
