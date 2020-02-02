@@ -1,18 +1,25 @@
 {
   "attempts": [
-    {
-      "time": "12.01.2020",
-      "progress": "your progress"
-    },
-    {
-      "time": "2.05.2010",
-      "progress": "your progress 2"
-    },
-    {
-      "time": "12.01.2020",
-      "progress": "your progress",
-      "urlUserPicture": "http://url1",
-      "urlSamplePiture": "http://UrL2"
-    }
+      {
+        "time": "25.06.2020",
+        "progress": 35,
+        "difference": "difference",
+        "userScreen": "userScreen"
+      },{
+        "time": "26.06.2021",
+        "progress": 50,
+        "difference": "difference",
+        "userScreen": "userScreen"
+      },{
+        "time": "26.01.2020",
+        "progress": 80,
+        "difference": "difference",
+        "userScreen": "userScreen"
+      },{
+        "time": "26.06.2020",
+        "progress": 50,
+        "difference": "difference",
+        "userScreen": "userScreen"
+      }
   ]
 }

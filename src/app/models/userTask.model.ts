@@ -1,9 +1,7 @@
 export class UserTask {
-  name: string;
-  deadline: string;
   condition: string;
-  bestScreen: string;
-  tries: number;
+  name: string;
+  deadLine: string;
   bestTry: string;
   triesData: TryData[];
 }
@@ -17,8 +15,7 @@ export class TryData {
 
 export class TaskDescription {
   description: string;
-  deadLine: string;
   name: string;
+  deadLine: string;
   urlSample: string;
-
 }

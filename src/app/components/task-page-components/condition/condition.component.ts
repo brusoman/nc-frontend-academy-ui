@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {UserTask} from '../../../models/userTask.model';
+import {UserTask, TaskDescription} from '../../../models/userTask.model';
 
 @Component({
   selector: 'app-condition',

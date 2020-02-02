@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserTask} from '../../../models/userTask.model';
+import {UserTask, TaskDescription} from '../../../models/userTask.model';
 
 @Component({
   selector: 'app-task-page',
@@ -9,6 +9,7 @@ import {UserTask} from '../../../models/userTask.model';
 export class TaskPageComponent implements OnInit {
 
   currentTask: UserTask;
+  ident: string;
   showInfo = true;
 
   constructor() { }
@@ -19,6 +20,9 @@ export class TaskPageComponent implements OnInit {
       this.showInfo = true;
     } else {
       this.showInfo = false;
+    }
+    if (event === undefined) {
+      this.ident = 'lol';
     }
   }
 

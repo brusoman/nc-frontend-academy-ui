@@ -42,7 +42,7 @@ export class HttpService {
 
   getUserTask(taskId: number, userId: number): Observable<UserTask>  {
     return this.http.get('/assets/userTask.json').pipe(map((task: any) => {
-      return {name: task.name, deadline: task.deadline, condition: task.condition, bestScreen: task.bestScreen,
+      return {name: task.name, deadLine: task.deadline, condition: task.condition, bestScreen: task.bestScreen,
         tries: task.tries, bestTry: task.bestTry, triesData: task['triesData']};
     }));
   }
@@ -80,8 +80,8 @@ export class HttpService {
     return this.http.get( 'assets/descr.json').pipe(map( (descr: any) => {
       return {
         description: descr.description,
-        deadLine: descr.deadLine,
         name: descr.name,
+        deadLine: descr.deadLine,
         urlSample: descr.urlSample
       };
     }));
