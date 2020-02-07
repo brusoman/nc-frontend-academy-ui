@@ -9,7 +9,7 @@ import {UserTask, TaskDescription} from '../../../models/userTask.model';
 export class TaskPageComponent implements OnInit {
 
   currentTask: UserTask;
-  ident: string;
+  ident: string = 'ok';
   showInfo = true;
 
   constructor() { }
@@ -22,7 +22,7 @@ export class TaskPageComponent implements OnInit {
       this.showInfo = false;
     }
     if (event === undefined) {
-      this.ident = 'lol';
+      this.ident = 'undifined';
     }
   }
 

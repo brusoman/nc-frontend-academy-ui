@@ -10,7 +10,7 @@ import {UserTask, TryData, TaskDescription} from '../../../models/userTask.model
 })
 export class ListComponent implements OnInit {
 
-  @Output() public outToTaskPage = new EventEmitter<UserTask>();
+  @Output() public outToTaskPage = new EventEmitter();
   @Output() public outToLoadPage = new EventEmitter();
   currentTask: UserTask = null;
   currentAtt: TryData[] = [];
@@ -56,17 +56,16 @@ export class ListComponent implements OnInit {
     this.http.getAttempts(1, taskId,13).subscribe(
       (data) => {
         this.currentAtt             = data;
+        this.currentTask.triesData  = this.currentAtt;
       });
     this.http.getDescription(taskId, 13).subscribe(
       (data) => {
         this.currentDescr           = data;
+        this.currentTask.name       = this.currentDescr.name;
+        this.currentTask.condition  = this.currentDescr.description;
+        this.currentTask.deadLine   = this.currentDescr.deadLine;
+        this.currentTask.bestTry    = this.currentDescr.urlSample;
       });
-    this.setUserTask();
-    if (this.currentTask !== null) {
-      this.outToTaskPage.emit(this.currentTask);
-    } else {
-      this.setUserTask();
-    }
     this.currentTaskJson = JSON.stringify(this.currentTask);
   }
 
