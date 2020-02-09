@@ -21,7 +21,7 @@
         </thead>
         <tbody *ngFor="let item of currentUserTaskAttempts">
         <tr>
-          <td>{{item.time}}</td>
+          <td>{{Date(item.time)}}</td>
           <td>{{item.progress}}%</td>
         </tr>
         </tbody>

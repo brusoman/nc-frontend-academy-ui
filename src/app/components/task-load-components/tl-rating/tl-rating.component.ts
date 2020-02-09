@@ -12,6 +12,10 @@ export class TlRatingComponent implements OnInit {
   @Input() currentTask: Task;
   @Input() currentUserTaskAttempts: UserTask[];
   differenceOpacity = false;
+  Date(dateString: string) {
+    const date: Date = new Date(dateString.substring(0, dateString.length - 11));
+    return date.toLocaleString('en-US', {hour12: false});
+  }
   Opacity() {
     const difference = document.querySelector('.rating__pictures__difference') as HTMLElement;
     if (this.differenceOpacity === false) {

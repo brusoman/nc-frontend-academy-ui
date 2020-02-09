@@ -10,16 +10,16 @@
   <table class="table table-compact rating__table">
     <thead>
     <tr>
-      <th class="rating__table__cell">Количество попыток</th>
+      <th class="rating__table__cell">Номер попытки</th>
       <th class="rating__table__cell_middle">Процент совпадения</th>
       <th class="rating__table__cell">Последняя сдача</th>
     </tr>
     </thead>
     <tbody *ngFor="let item of currentUserTaskAttempts">
     <tr>
-      <td class="rating__table__cell">{{currentTask.attemptsMax}}</td>
-      <td class="rating__table__cell_middle">{{item.progress}}</td>
-      <td class="rating__table__cell">{{item.time}}</td>
+      <td class="rating__table__cell">{{currentUserTaskAttempts.indexOf(item) + 1}}</td>
+      <td class="rating__table__cell_middle">{{item.progress}}%</td>
+      <td class="rating__table__cell">{{Date(item.time)}}</td>
     </tr>
     </tbody>
   </table>
