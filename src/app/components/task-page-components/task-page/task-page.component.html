@@ -3,7 +3,9 @@
        [class.box]="!showInfo"
        [class.box2]="showInfo">
     <div class="box__list">
-      <app-list (outToTaskPage)='receiveFromList($event)'></app-list>
+      <app-list (outAttemptsToTaskPage)='receiveAttemptsFromList($event)'
+                (outTaskToTaskPage)='receiveTaskFromList($event)'
+                [userToken]="userToken"></app-list>
     </div>
     <ng-container *ngIf="!showInfo">
       <div class="box__condition-rating">
@@ -11,7 +13,7 @@
           <app-condition [currentTask]="currentTask"></app-condition>
         </div>
         <div class="box__condition-rating__rating">
-          <app-rating [currentTask]="currentTask"></app-rating>
+          <app-rating [currentTask]="currentTask" [currentUserTaskAttempts]="currentUserTaskAttempts"></app-rating>
         </div>
       </div>
     </ng-container>

@@ -7,7 +7,7 @@
       <img class="rating__pictures__difference" src="../../../../assets/images/difference.jpg" alt="logo">
       <img class="rating__pictures__userPicture" src="../../../../assets/images/userPicture.jpg" alt="logo">
     </div>
-    <img class="rating__pictures__original" src="../../../../assets/images/original.jpg" alt="logo">
+    <img class="rating__pictures__original" src="" alt="logo">
     <button class="btn btn-primary rating__pictures__swap" (click)="Opacity()">Swap</button>
   </div>
   <div>
@@ -19,10 +19,10 @@
           <th>Процент совпадения</th>
         </tr>
         </thead>
-        <tbody *ngFor="let item of currentTask.triesData">
+        <tbody *ngFor="let item of currentUserTaskAttempts">
         <tr>
           <td>{{item.time}}</td>
-          <td>{{item.percent}}</td>
+          <td>{{item.progress}}%</td>
         </tr>
         </tbody>
       </table>

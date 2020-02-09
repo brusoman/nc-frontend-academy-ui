@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder} from '@angular/forms';
 import {HttpService} from '../../services/http.service';
-import {User} from '../../models/user.model';
+import {UserToken} from '../../models/userToken.model';
 import {UserData} from '../../models/userData.model';
 
 
@@ -12,7 +12,8 @@ import {UserData} from '../../models/userData.model';
 })
 export class LoginComponent implements OnInit {
   user: FormGroup;
-  receivedUser: User;
+  userToken: UserToken;
+  userTokenJSON: string = null;
   done = false;
   userData: UserData;
   error: any = null;
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
   Login() {
     this.http.postLogPass(this.user.value)
       .subscribe(
-       (data: User) => {this.receivedUser = data; this.done = true; },
+       (data: UserToken) => {this.userToken = data; this.done = true;
+                             this.userTokenJSON = JSON.stringify(this.userToken); },
         error => {this.error = error; console.log(error); }
      );
   }

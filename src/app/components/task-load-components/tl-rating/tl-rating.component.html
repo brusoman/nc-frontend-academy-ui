@@ -15,10 +15,10 @@
       <th class="rating__table__cell">Последняя сдача</th>
     </tr>
     </thead>
-    <tbody *ngFor="let item of currentTask.triesData">
+    <tbody *ngFor="let item of currentUserTaskAttempts">
     <tr>
-      <td class="rating__table__cell">{{currentTask.tries}}</td>
-      <td class="rating__table__cell_middle">{{item.percent}}</td>
+      <td class="rating__table__cell">{{currentTask.attemptsMax}}</td>
+      <td class="rating__table__cell_middle">{{item.progress}}</td>
       <td class="rating__table__cell">{{item.time}}</td>
     </tr>
     </tbody>

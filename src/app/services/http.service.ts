@@ -40,15 +40,34 @@ export class HttpService {
     return this.http.post(this.url + '/auth', body);
   }
 
-  getUserTask(taskId: number, userId: number): Observable<UserTask>  {
-    return this.http.get('/assets/userTask.json').pipe(map((task: any) => {
-      return {name: task.name, deadline: task.deadline, condition: task.condition, bestScreen: task.bestScreen,
-        tries: task.tries, bestTry: task.bestTry, triesData: task['triesData']};
+  getUserTaskAttempts(taskId: number, userId: number, token: string): Observable<UserTask[]>  {
+    return this.http.get(this.url + '/user-tasks/task?taskId=' + taskId + '&userId=' + userId,
+      {headers: {Authorization: 'Bearer_' + token}})
+      .pipe(map(data => {
+        const attemptsList = data['attempts'];
+        return attemptsList.map((task: any) => {
+          return {progress: task.progress,
+            time: task.time,
+            urlUserPicture: task.urlUserPicture,
+            urlSamplePicture: task.urlSamplePicture};
+    });
+      }));
+  }
+  getTask(taskId: number, token: string): Observable<Task>  {
+    return this.http.get(this.url + '/tasks/' + taskId, {headers: {Authorization: 'Bearer_' + token}}).pipe(map((task: any) => {
+      return {attemptsMax: task.attempts_max,
+        deadline: task.deadline,
+        description: task.description,
+        urlSample: task.urlSample,
+        name: task.name,
+        id: task.id,
+        section: task.section};
     }));
   }
 
-  getTask(): Observable<Task[]>  {
-    return this.http.get('/assets/tasks.json').pipe(map(data => {
+  getTaskList(token: string): Observable<Task[]>  {
+    return this.http.get(this.url + '/tasks/all', {headers: {Authorization: 'Bearer_' + token}})
+      .pipe(map(data  => {
       const taskList = data['taskList'];
       return taskList.map((task: any) => {
         return {id: task.id, name: task.name, section: task.section};

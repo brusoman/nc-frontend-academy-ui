@@ -1,7 +1,11 @@
 <div class="task">
   <div class="task__condition-rating">
-    <app-tl-condition class="task__condition-rating__condition" [currentTask]="currentTask"></app-tl-condition>
-    <app-tl-rating class="task__condition-rating__rating" [currentTask]="currentTask"></app-tl-rating>
+    <app-tl-condition class="task__condition-rating__condition"
+                      [currentTask]="currentTask"
+                      [currentUserTaskAttempts]="currentUserTaskAttempts"></app-tl-condition>
+    <app-tl-rating class="task__condition-rating__rating"
+                   [currentTask]="currentTask"
+    [currentUserTaskAttempts]="currentUserTaskAttempts"></app-tl-rating>
   </div>
   <app-send-field class="task__sender"></app-send-field>
 </div>
