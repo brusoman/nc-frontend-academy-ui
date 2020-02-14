@@ -1,10 +1,12 @@
 <div class="rating">
   <div class="rating__pictures">
     <div>
-      <img class="rating__pictures__difference" src="../../../../assets/images/difference.jpg">
-      <img class="rating__pictures__userPicture" src="../../../../assets/images/userPicture.jpg">
+      <img class="rating__pictures__difference"
+           src="http://localhost:8080/backend/files/{{currentUserTaskAttempts[0].urlSamplePicture}}">
+      <img class="rating__pictures__userPicture"
+           src="http://localhost:8080/backend/files/{{currentUserTaskAttempts[0].urlUserPicture}}">
     </div>
-    <img class ="rating__pictures__original" src="../../../../assets/images/original.jpg">
+    <img class ="rating__pictures__original" src="http://localhost:8080/backend/files/{{currentTask.urlSample}}">
     <button class="btn btn-primary rating__pictures__swap" (click)="Opacity()">Swap</button>
   </div>
   <table class="table table-compact rating__table">

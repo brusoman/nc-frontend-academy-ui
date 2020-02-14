@@ -13,8 +13,6 @@
         {{error|json}}
       </div>
       <button type="submit" class="btn btn-primary" (click)="Login()">LOG IN</button>
-      <button *ngIf="userTokenJSON != null" class="btn btn-primary"
-              [routerLink]="'/tasks'" [queryParams]="{'userToken': userTokenJSON}">NEXT</button>
     </div>
   </form>
   <div class="welcome">

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 import {User} from '../models/user.model';
 import {UserData} from '../models/userData.model';
 import {Observable} from 'rxjs';
@@ -40,9 +40,8 @@ export class HttpService {
     return this.http.post(this.url + '/auth', body);
   }
 
-  getUserTaskAttempts(taskId: number, userId: number, token: string): Observable<UserTask[]>  {
-    return this.http.get(this.url + '/user-tasks/task?taskId=' + taskId + '&userId=' + userId,
-      {headers: {Authorization: 'Bearer_' + token}})
+  getUserTaskAttempts(taskId: number, userId: number): Observable<UserTask[]>  {
+    return this.http.get(this.url + '/user-tasks/task?taskId=' + taskId + '&userId=' + userId)
       .pipe(map(data => {
         const attemptsList = data['attempts'];
         return attemptsList.map((task: any) => {
@@ -53,8 +52,8 @@ export class HttpService {
     });
       }));
   }
-  getTask(taskId: number, token: string): Observable<Task>  {
-    return this.http.get(this.url + '/tasks/' + taskId, {headers: {Authorization: 'Bearer_' + token}}).pipe(map((task: any) => {
+  getTask(taskId: number): Observable<Task>  {
+    return this.http.get(this.url + '/tasks/' + taskId).pipe(map((task: any) => {
       return {attemptsMax: task.attempts_max,
         deadline: task.deadline,
         description: task.description,
@@ -65,8 +64,8 @@ export class HttpService {
     }));
   }
 
-  getTaskList(token: string): Observable<Task[]>  {
-    return this.http.get(this.url + '/tasks/all', {headers: {Authorization: 'Bearer_' + token}})
+  getTaskList(): Observable<Task[]>  {
+    return this.http.get(this.url + '/tasks/all')
       .pipe(map(data  => {
       const taskList = data['taskList'];
       return taskList.map((task: any) => {
@@ -74,11 +73,17 @@ export class HttpService {
       });
     }));
   }
-  postFile(fileToUpload: File) {
-    const endpoint = 'your-destination-url';
+  postFile(fileToUpload: File, taskId: number, userId: number) {
+    const endpoint = this.url + '/user-tasks/upload?taskId=' + taskId + '&userId=' + userId;
     const formData: FormData = new FormData();
-    formData.append('fileKey', fileToUpload, fileToUpload.name);
+    formData.append('file', fileToUpload, fileToUpload.name);
     return this.http.post(endpoint, formData);
+  }
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
+  getToken() {
+    return localStorage.getItem('token');
   }
 }
 

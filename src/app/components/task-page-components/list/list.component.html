@@ -5,8 +5,7 @@
       <div class="nav__group">
         <div class="nav__group__name" [routerLink]="['/task-load', item.id]"
              [queryParams]="{'currentTask': currentTaskJSON,
-              'currentUserTaskAttempts': currentUserTaskAttemptsJSON,
-              'token': userToken.token}">
+              'currentUserTaskAttempts': currentUserTaskAttemptsJSON}">
           {{item.name}}
         </div>
         <div class="nav__group__options" *ngIf="isPressed"
@@ -20,8 +19,7 @@
       <div class="nav__group">
         <div class="nav__group__name" [routerLink]="['/task-load', item.id]"
              [queryParams]="{'currentTask': currentTaskJSON,
-              'currentUserTaskAttempts': currentUserTaskAttemptsJSON,
-              'token': userToken.token}">
+              'currentUserTaskAttempts': currentUserTaskAttemptsJSON}">
           {{item.name}}
         </div>
         <div class="nav__group__options" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</div>
@@ -34,8 +32,7 @@
       <div class="nav__group">
         <div class="nav__group__name" [routerLink]="['/task-load', item.id]"
              [queryParams]="{'currentTask': currentTaskJSON,
-              'currentUserTaskAttempts': currentUserTaskAttemptsJSON,
-              'token': userToken.token}">
+              'currentUserTaskAttempts': currentUserTaskAttemptsJSON}">
           {{item.name}}
         </div>
         <div class="nav__group__options" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</div>

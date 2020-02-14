@@ -13,7 +13,6 @@ import {Task} from '../../../models/task.model';
 })
 export class TaskLoadComponent implements OnInit {
 
-  token: string;
   currentTaskJSON: string = null;
   currentUserTaskAttemptsJSON: string = null;
   currentTask: Task;
@@ -28,7 +27,6 @@ export class TaskLoadComponent implements OnInit {
     (queryParam: any) => {
        this.currentTaskJSON = queryParam.currentTask;
        this.currentUserTaskAttemptsJSON = queryParam.currentUserTaskAttempts;
-       this.token = queryParam.token;
        try {
          this.currentTask = JSON.parse(this.currentTaskJSON);
        } catch (e) {
@@ -45,13 +43,13 @@ export class TaskLoadComponent implements OnInit {
   }
 
   getUserTaskAttempts(taskId: number) {
-    this.http.getUserTaskAttempts(taskId, 16, this.token).subscribe(
+    this.http.getUserTaskAttempts(taskId, 16).subscribe(
       (data) => {this.currentUserTaskAttempts = data;
                  this.currentUserTaskAttemptsJSON = JSON.stringify(this.currentUserTaskAttempts);
       });
   }
   getTask(taskId: number) {
-    this.http.getTask(taskId, this.token).subscribe(
+    this.http.getTask(taskId).subscribe(
       (data) => {this.currentTask = data;
                  this.currentTaskJSON = JSON.stringify(this.currentTask);
       });

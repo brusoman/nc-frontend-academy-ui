@@ -12,6 +12,7 @@ export class RatingComponent implements OnInit {
   @Input() currentTask: Task;
   @Input() currentUserTaskAttempts: UserTask[];
   differenceOpacity = false;
+  token: string = localStorage.getItem('token');
   constructor() { }
   attempt: number[] = [];
   setAtt(): void {
@@ -26,7 +27,7 @@ export class RatingComponent implements OnInit {
     }
   }
   Date(dateString: string) {
-    const date: Date = new Date(dateString.substring(0, dateString.length - 11));
+    const date: Date = new Date(dateString.split('[')[0]);
     return date.toLocaleString('en-US', {hour12: false});
   }
   Opacity() {

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder} from '@angular/forms';
 import {HttpService} from '../../services/http.service';
-import {UserToken} from '../../models/userToken.model';
 import {UserData} from '../../models/userData.model';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -12,19 +12,18 @@ import {UserData} from '../../models/userData.model';
 })
 export class LoginComponent implements OnInit {
   user: FormGroup;
-  userToken: UserToken;
-  userTokenJSON: string = null;
   done = false;
   userData: UserData;
   error: any = null;
-  constructor(private fb: FormBuilder, private http: HttpService) {
+  constructor(private fb: FormBuilder, private http: HttpService, private router: Router) {
 
   }
   Login() {
     this.http.postLogPass(this.user.value)
       .subscribe(
-       (data: UserToken) => {this.userToken = data; this.done = true;
-                             this.userTokenJSON = JSON.stringify(this.userToken); },
+       data => {this.done = true;
+                localStorage.setItem('token', data['token']);
+                this.router.navigate(['/tasks']); },
         error => {this.error = error; console.log(error); }
      );
   }
@@ -38,5 +37,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+    localStorage.clear();
   }
 }
