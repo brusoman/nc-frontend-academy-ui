@@ -1,10 +1,24 @@
 <div class="rating">
   <div class="rating__pictures">
-    <div>
-      <img class="rating__pictures__difference" src="../../../../assets/images/difference.jpg">
-      <img class="rating__pictures__userPicture" src="../../../../assets/images/userPicture.jpg">
-    </div>
-    <img class ="rating__pictures__original" src="../../../../assets/images/original.jpg">
+    <ng-container  *ngIf="num === 0">
+      <div>
+        <img class="rating__pictures__difference" src="../../../../assets/images/difference.jpg" (click)="KingSize(3)">
+        <img class="rating__pictures__userPicture" src="../../../../assets/images/userPicture.jpg" (click)="KingSize(2)">
+      </div>
+
+        <img class ="rating__pictures__original" src="../../../../assets/images/original.jpg" (click)="KingSize(1)">
+      </ng-container>
+    <ng-container *ngIf="num !== 0">
+      <div>
+        <img class="rating__pictures__difference" src="../../../../assets/images/difference.jpg" (click)="KingSize(3)">
+        <img class="rating__pictures__userPicture" src="../../../../assets/images/userPicture.jpg" (click)="KingSize(2)">
+      </div>
+
+      <img class ="rating__pictures__original" src="../../../../assets/images/original.jpg" (click)="KingSize(1)">
+
+    </ng-container>
+
+
     <button class="btn btn-primary rating__pictures__swap" (click)="Opacity()">Swap</button>
   </div>
   <table class="table table-compact rating__table">
@@ -25,3 +39,26 @@
     </tbody>
   </table>
 </div>
+
+
+<ng-container *ngIf="num === 1">
+  <div class="parent_noflex">
+    <div class="noflex">
+        <img class ="rating__pictures__original_big" src="../../../../assets/images/original.jpg" (click)="KingSize(0)">
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="num === 2">
+  <div class="parent_noflex">
+    <div class="noflex">
+      <img class="rating__pictures__userPicture_big" src="../../../../assets/images/userPicture.jpg" (click)="KingSize(0)">
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="num === 3">
+  <div class="parent_noflex">
+    <div class="noflex">
+      <img class="rating__pictures__difference" src="../../../../assets/images/difference.jpg" (click)="KingSize(0)">
+    </div>
+  </div>
+</ng-container>

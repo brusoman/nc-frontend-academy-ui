@@ -10,6 +10,8 @@ export class TlRatingComponent implements OnInit {
 
   @Input() private currentTask: UserTask;
   differenceOpacity = false;
+  big = false;
+  num = 0;
   Opacity() {
     const difference = document.querySelector('.rating_pictures_difference') as HTMLElement;
     if (this.differenceOpacity === false) {
@@ -19,6 +21,10 @@ export class TlRatingComponent implements OnInit {
       difference.style.opacity = '100%';
       this.differenceOpacity = false;
     }
+  }
+
+  KingSize(pickId: number) {
+    this.num = pickId;
   }
   constructor() { }
 
