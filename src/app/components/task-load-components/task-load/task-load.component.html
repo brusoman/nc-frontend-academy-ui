@@ -8,6 +8,6 @@
     [currentUserTaskAttempts]="currentUserTaskAttempts"></app-tl-rating>
   </div>
   <app-send-field class="task__sender" [currentTask]="currentTask"
-                  [taskId]="taskId"></app-send-field>
+                  [taskId]="taskId" (outToLoadPage)="receiveFromSendField($event)"></app-send-field>
 </div>
 

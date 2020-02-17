@@ -78,7 +78,7 @@ export class HttpService {
     const endpoint = this.url + '/user-tasks/upload?taskId=' + taskId + '&userId=' + localStorage.getItem('userId');
     const formData: FormData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
-    return this.http.post(endpoint, formData);
+    return this.http.post(endpoint, formData, {observe: 'response'});
   }
   loggedIn() {
     return !!localStorage.getItem('token');

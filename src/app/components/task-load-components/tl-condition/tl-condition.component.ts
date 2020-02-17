@@ -12,7 +12,7 @@ export class TlConditionComponent implements OnInit {
   @Input() currentTask: Task;
   @Input() currentUserTaskAttempts: UserTask[];
   Date(dateString: string) {
-    const date: Date = new Date(dateString.substring(0, dateString.length - 11));
+    const date: Date = new Date(dateString.split('[')[0]);
     return date.toLocaleString('en-US', {hour12: false});
   }
   constructor() {
