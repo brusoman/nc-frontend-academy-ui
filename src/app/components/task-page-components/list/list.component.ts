@@ -1,4 +1,4 @@
-import {Component, Output, OnInit, EventEmitter} from '@angular/core';
+import {Component, Output, OnInit, EventEmitter, Input} from '@angular/core';
 import {Task} from '../../../models/task.model';
 import {HttpService} from '../../../services/http.service';
 import {UserTask} from '../../../models/userTask.model';
@@ -8,16 +8,17 @@ import {UserTask} from '../../../models/userTask.model';
   providers: [HttpService]
 })
 export class ListComponent implements OnInit {
-
-  @Output() public outToTaskPage = new EventEmitter();
-  @Output() public outToLoadPage = new EventEmitter();
-  currentTask: UserTask;
+  @Output() public outAttemptsToTaskPage = new EventEmitter();
+  @Output() public outTaskToTaskPage = new EventEmitter();
+  currentUserTaskAttempts: UserTask[];
+  currentTask: Task;
   taskList: Task[];
   isPressed = true;
   basicTasks: Task[] = [];
   levelUpTasks: Task[] = [];
   advancedTasks: Task[] = [];
-  currentTaskJson: string = null;
+  currentUserTaskAttemptsJSON: string = null;
+  currentTaskJSON: string = null;
   createTaskArrays() {
     let i = 0;
     while (i < this.taskList.length) {
@@ -41,21 +42,29 @@ export class ListComponent implements OnInit {
     }
   }
   sendToTaskPage(idList: number) {
-    this.getUserTask(idList);
+    this.getUserTaskAttempts(idList);
+    this.getTask(idList);
     this.isPressed = true;
   }
   getTaskList() {
-    this.http.getTask().subscribe(
+    this.http.getTaskList().subscribe(
       (data) => {this.taskList = data;
                  this.createTaskArrays(); }
     );
   }
-  getUserTask(taskId: number) {
-    this.http.getUserTask(taskId, 1).subscribe(
-      (data) => {this.currentTask = data;
-                 this.outToTaskPage.emit(this.currentTask);
-                 this.currentTaskJson = JSON.stringify(this.currentTask);
+  getUserTaskAttempts(taskId: number) {
+    this.http.getUserTaskAttempts(taskId).subscribe(
+      (data) => {this.currentUserTaskAttempts = data;
+                 this.outAttemptsToTaskPage.emit(this.currentUserTaskAttempts);
+                 this.currentUserTaskAttemptsJSON = JSON.stringify(this.currentUserTaskAttempts);
         });
+  }
+  getTask(taskId: number) {
+    this.http.getTask(taskId).subscribe(
+      (data) => {this.currentTask = data;
+                 this.outTaskToTaskPage.emit(this.currentTask);
+                 this.currentTaskJSON = JSON.stringify(this.currentTask);
+      });
   }
 
   constructor(private http: HttpService) {}

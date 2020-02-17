@@ -3,10 +3,13 @@
     Basic
     <clr-vertical-nav-group-children *ngFor="let item of basicTasks">
       <div class="nav__group">
-        <div class="nav__group__name" [routerLink]="['/task-load', item.id]" [queryParams]="currentTask">
+        <div class="nav__group__name" [routerLink]="['/task-load', item.id]"
+             [queryParams]="{'currentTask': currentTaskJSON,
+              'currentUserTaskAttempts': currentUserTaskAttemptsJSON}">
           {{item.name}}
         </div>
-        <div class="nav__group__options" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</div>
+        <div class="nav__group__options" *ngIf="isPressed"
+             (click)="sendToTaskPage(item.id)">...</div>
       </div>
     </clr-vertical-nav-group-children>
   </clr-vertical-nav-group>
@@ -14,7 +17,9 @@
     LevelUp
     <clr-vertical-nav-group-children *ngFor="let item of levelUpTasks">
       <div class="nav__group">
-        <div class="nav__group__name" [routerLink]="['/task-load', item.id]" [queryParams]="currentTask">
+        <div class="nav__group__name" [routerLink]="['/task-load', item.id]"
+             [queryParams]="{'currentTask': currentTaskJSON,
+              'currentUserTaskAttempts': currentUserTaskAttemptsJSON}">
           {{item.name}}
         </div>
         <div class="nav__group__options" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</div>
@@ -25,7 +30,9 @@
     Advanced
     <clr-vertical-nav-group-children *ngFor="let item of advancedTasks">
       <div class="nav__group">
-        <div class="nav__group__name" [routerLink]="['/task-load', item.id]" [queryParams]="currentTask">
+        <div class="nav__group__name" [routerLink]="['/task-load', item.id]"
+             [queryParams]="{'currentTask': currentTaskJSON,
+              'currentUserTaskAttempts': currentUserTaskAttemptsJSON}">
           {{item.name}}
         </div>
         <div class="nav__group__options" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</div>

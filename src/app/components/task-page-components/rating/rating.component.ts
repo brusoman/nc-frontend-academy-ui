@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {UserTask} from '../../../models/userTask.model';
+import {Task} from '../../../models/task.model';
 
 @Component({
   selector: 'app-rating',
@@ -8,20 +9,27 @@ import {UserTask} from '../../../models/userTask.model';
 })
 export class RatingComponent implements OnInit {
 
-  @Input() currentTask: UserTask;
+  attemptNumber = 0;
+  @Input() currentTask: Task;
+  @Input() currentUserTaskAttempts: UserTask[];
   differenceOpacity = false;
+  token: string = localStorage.getItem('token');
   constructor() { }
   attempt: number[] = [];
   setAtt(): void {
     let i = 0;
     while (i < 10) {
-      if (i < this.currentTask.triesData.length) {
+      if (i < this.currentUserTaskAttempts.length) {
         this.attempt[i] = 1;
       } else {
         this.attempt[i] = 0;
       }
       i++;
     }
+  }
+  Date(dateString: string) {
+    const date: Date = new Date(dateString.split('[')[0]);
+    return date.toLocaleString('en-US', {hour12: false});
   }
   Opacity() {
     const difference = document.querySelector('.rating__pictures__difference') as HTMLElement;
@@ -32,6 +40,9 @@ export class RatingComponent implements OnInit {
       difference.style.opacity = '100%';
       this.differenceOpacity = false;
     }
+  }
+  setAttemptNumber(attemptNumber: number) {
+    this.attemptNumber = attemptNumber;
   }
 
   ngOnInit() {

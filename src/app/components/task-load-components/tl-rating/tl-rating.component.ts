@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserTask} from '../../../models/userTask.model';
+import {Task} from '../../../models/task.model';
 
 @Component({
   selector: 'app-tl-rating',
@@ -8,8 +9,14 @@ import {UserTask} from '../../../models/userTask.model';
 })
 export class TlRatingComponent implements OnInit {
 
-  @Input() private currentTask: UserTask;
+  attemptNumber = 0;
+  @Input() currentTask: Task;
+  @Input() currentUserTaskAttempts: UserTask[];
   differenceOpacity = false;
+  Date(dateString: string) {
+    const date: Date = new Date(dateString.split('[')[0]);
+    return date.toLocaleString('en-US', {hour12: false});
+  }
   Opacity() {
     const difference = document.querySelector('.rating__pictures__difference') as HTMLElement;
     if (this.differenceOpacity === false) {
@@ -19,6 +26,9 @@ export class TlRatingComponent implements OnInit {
       difference.style.opacity = '100%';
       this.differenceOpacity = false;
     }
+  }
+  setAttemptNumber(attemptNumber: number) {
+    this.attemptNumber = attemptNumber;
   }
   constructor() { }
 

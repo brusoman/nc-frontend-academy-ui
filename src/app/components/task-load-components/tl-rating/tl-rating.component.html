@@ -1,25 +1,28 @@
 <div class="rating">
   <div class="rating__pictures">
     <div>
-      <img class="rating__pictures__difference" src="../../../../assets/images/difference.jpg">
-      <img class="rating__pictures__userPicture" src="../../../../assets/images/userPicture.jpg">
+      <img class="rating__pictures__difference"
+           src="http://localhost:8080/backend/files/{{currentUserTaskAttempts[attemptNumber].urlSamplePicture}}">
+      <img class="rating__pictures__userPicture"
+           src="http://localhost:8080/backend/files/{{currentUserTaskAttempts[attemptNumber].urlUserPicture}}">
     </div>
-    <img class ="rating__pictures__original" src="../../../../assets/images/original.jpg">
+    <img class ="rating__pictures__original" src="http://localhost:8080/backend/files/{{currentTask.urlSample}}">
     <button class="btn btn-primary rating__pictures__swap" (click)="Opacity()">Swap</button>
   </div>
   <table class="table table-compact rating__table">
     <thead>
     <tr>
-      <th class="rating__table__cell">Количество попыток</th>
+      <th class="rating__table__cell">Рейтинг попыток</th>
       <th class="rating__table__cell_middle">Процент совпадения</th>
-      <th class="rating__table__cell">Последняя сдача</th>
+      <th class="rating__table__cell">Время сдачи</th>
     </tr>
     </thead>
-    <tbody *ngFor="let item of currentTask.triesData">
-    <tr>
-      <td class="rating__table__cell">{{currentTask.tries}}</td>
-      <td class="rating__table__cell_middle">{{item.percent}}</td>
-      <td class="rating__table__cell">{{item.time}}</td>
+    <tbody *ngFor="let item of currentUserTaskAttempts">
+    <tr class="rating__table__row"
+      (click)="setAttemptNumber(currentUserTaskAttempts.indexOf(item))">
+      <td class="rating__table__cell">{{currentUserTaskAttempts.indexOf(item) + 1}}</td>
+      <td class="rating__table__cell_middle">{{item.progress}}%</td>
+      <td class="rating__table__cell">{{Date(item.time)}}</td>
     </tr>
     </tbody>
   </table>

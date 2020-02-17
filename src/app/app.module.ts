@@ -12,20 +12,23 @@ import { TaskPageComponent } from './components/task-page-components/task-page/t
 import { ConditionComponent } from './components/task-page-components/condition/condition.component';
 import { RatingComponent } from './components/task-page-components/rating/rating.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { SettingsComponent } from './components/settings/settings.component';
 import {TaskLoadComponent} from './components/task-load-components/task-load/task-load.component';
 import { TlConditionComponent } from './components/task-load-components/tl-condition/tl-condition.component';
 import { SendFieldComponent } from './components/task-load-components/send-field/send-field.component';
 import { TlRatingComponent } from './components/task-load-components/tl-rating/tl-rating.component';
+import {AuthGuard} from './auth.guard';
+import {HttpService} from './services/http.service';
+import {TokenInterceptorService} from './services/token-interceptor.service';
 
 /*routing*/
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'task-load/:taskId', component: TaskLoadComponent},
-  {path: 'tasks', component: TaskPageComponent},
-  {path: 'settings', component: SettingsComponent},
+  {path: 'task-load/:taskId', component: TaskLoadComponent, canActivate: [AuthGuard]},
+  {path: 'tasks', component: TaskPageComponent, canActivate: [AuthGuard]},
+  {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: '/login'}
 ];
 
@@ -55,7 +58,12 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, AuthGuard, HttpService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

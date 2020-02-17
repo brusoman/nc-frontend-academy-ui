@@ -1,5 +1,9 @@
 export class Task {
-  id: number;
+  attemptsMax: number;
+  deadline: string;
+  description: string;
   name: string;
+  urlSample: string;
+  id: number;
   section: string;
 }
