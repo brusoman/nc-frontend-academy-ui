@@ -10,9 +10,9 @@
         <input type="password" id="password" clrPassword placeholder="Password" formControlName="password"/>
       </clr-password-container>
       <div class="error active" *ngIf="error">
-        {{error|json}}
+        {{errorMessage}}
       </div>
-      <button type="submit" class="btn btn-primary" (click)="Login()">LOG IN</button>
+      <button type="submit" class="btn btn-primary" (click)="login()">LOG IN</button>
     </div>
   </form>
   <div class="welcome">

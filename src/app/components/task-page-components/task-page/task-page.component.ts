@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {UserTask} from '../../../models/userTask.model';
 import {Task} from '../../../models/task.model';
 
-
 @Component({
   selector: 'app-task-page',
   templateUrl: './task-page.component.html',

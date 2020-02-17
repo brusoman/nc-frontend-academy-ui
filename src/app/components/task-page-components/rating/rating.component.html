@@ -5,10 +5,11 @@
   <div class="rating__pictures">
     <div>
       <img class="rating__pictures__difference"
-           src="http://localhost:8080/backend/files/{{currentUserTaskAttempts[0].urlSamplePicture}}"
+           src="http://localhost:8080/backend/files/{{currentUserTaskAttempts[attemptNumber].urlSamplePicture}}"
            alt="logo">
       <img class="rating__pictures__userPicture"
-           src="http://localhost:8080/backend/files/{{currentUserTaskAttempts[0].urlUserPicture}}" alt="logo">
+           src="http://localhost:8080/backend/files/{{currentUserTaskAttempts[attemptNumber].urlUserPicture}}"
+           alt="logo">
     </div>
     <img class="rating__pictures__original" src="http://localhost:8080/backend/files/{{currentTask.urlSample}}" alt="logo">
     <button class="btn btn-primary rating__pictures__swap" (click)="Opacity()">Swap</button>
@@ -19,19 +20,19 @@
         <thead>
         <tr>
           <th>Время сдачи</th>
-          <th>Процент совпадения</th>
+          <th>Совпадение</th>
         </tr>
         </thead>
         <tbody *ngFor="let item of currentUserTaskAttempts">
-        <tr>
-          <td>{{Date(item.time)}}</td>
-          <td>{{item.progress}}%</td>
+        <tr (click)="setAttemptNumber(currentUserTaskAttempts.indexOf(item))">
+          <td class="rating__table__time">{{Date(item.time)}}</td>
+          <td class="rating__table__percent">{{item.progress}}%</td>
         </tr>
         </tbody>
       </table>
     </div>
     <div class="rating__passes">
-      <p>Количество попыток</p>
+      <p class="rating__passes__header">Количество попыток</p>
       <div *ngFor="let item of attempt" class="rating__passes__stars">
         <clr-icon *ngIf="item === 0" shape="star"></clr-icon>
         <clr-icon *ngIf="item === 1" shape="star" class="rating__passes__stars_gold"></clr-icon>

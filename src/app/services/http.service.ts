@@ -40,8 +40,9 @@ export class HttpService {
     return this.http.post(this.url + '/auth', body);
   }
 
-  getUserTaskAttempts(taskId: number, userId: number): Observable<UserTask[]>  {
-    return this.http.get(this.url + '/user-tasks/task?taskId=' + taskId + '&userId=' + userId)
+  getUserTaskAttempts(taskId: number): Observable<UserTask[]>  {
+    return this.http.get(this.url + '/user-tasks/task?taskId=' + taskId
+      + '&userId=' + localStorage.getItem('userId'))
       .pipe(map(data => {
         const attemptsList = data['attempts'];
         return attemptsList.map((task: any) => {
@@ -73,8 +74,8 @@ export class HttpService {
       });
     }));
   }
-  postFile(fileToUpload: File, taskId: number, userId: number) {
-    const endpoint = this.url + '/user-tasks/upload?taskId=' + taskId + '&userId=' + userId;
+  postFile(fileToUpload: File, taskId: number) {
+    const endpoint = this.url + '/user-tasks/upload?taskId=' + taskId + '&userId=' + localStorage.getItem('userId');
     const formData: FormData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
     return this.http.post(endpoint, formData);

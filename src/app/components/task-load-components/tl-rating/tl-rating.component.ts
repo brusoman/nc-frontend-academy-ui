@@ -9,6 +9,7 @@ import {Task} from '../../../models/task.model';
 })
 export class TlRatingComponent implements OnInit {
 
+  attemptNumber = 0;
   @Input() currentTask: Task;
   @Input() currentUserTaskAttempts: UserTask[];
   differenceOpacity = false;
@@ -25,6 +26,9 @@ export class TlRatingComponent implements OnInit {
       difference.style.opacity = '100%';
       this.differenceOpacity = false;
     }
+  }
+  setAttemptNumber(attemptNumber: number) {
+    this.attemptNumber = attemptNumber;
   }
   constructor() { }
 

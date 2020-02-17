@@ -53,7 +53,7 @@ export class ListComponent implements OnInit {
     );
   }
   getUserTaskAttempts(taskId: number) {
-    this.http.getUserTaskAttempts(taskId, 16).subscribe(
+    this.http.getUserTaskAttempts(taskId).subscribe(
       (data) => {this.currentUserTaskAttempts = data;
                  this.outAttemptsToTaskPage.emit(this.currentUserTaskAttempts);
                  this.currentUserTaskAttemptsJSON = JSON.stringify(this.currentUserTaskAttempts);

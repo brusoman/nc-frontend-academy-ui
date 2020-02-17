@@ -43,7 +43,7 @@ export class TaskLoadComponent implements OnInit {
   }
 
   getUserTaskAttempts(taskId: number) {
-    this.http.getUserTaskAttempts(taskId, 16).subscribe(
+    this.http.getUserTaskAttempts(taskId).subscribe(
       (data) => {this.currentUserTaskAttempts = data;
                  this.currentUserTaskAttemptsJSON = JSON.stringify(this.currentUserTaskAttempts);
       });

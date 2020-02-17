@@ -5,6 +5,7 @@ import {UserData} from '../../models/userData.model';
 import {Router} from '@angular/router';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,17 +16,27 @@ export class LoginComponent implements OnInit {
   done = false;
   userData: UserData;
   error: any = null;
-  constructor(private fb: FormBuilder, private http: HttpService, private router: Router) {
+  errorMessage = 'Wrong username or password! Please try again';
+  constructor(private fb: FormBuilder, private http: HttpService,
+              private router: Router) {
 
   }
-  Login() {
+  login() {
     this.http.postLogPass(this.user.value)
       .subscribe(
        data => {this.done = true;
                 localStorage.setItem('token', data['token']);
-                this.router.navigate(['/tasks']); },
-        error => {this.error = error; console.log(error); }
+                localStorage.setItem('username', data['username']);
+                this.getUserId(data['username']);
+                this.router.navigate(['/tasks']);
+         },
+        error => {this.error = error;
+                  console.log(error); }
      );
+  }
+  getUserId(username: string) {
+    this.http.getUserDataByLogin(username).subscribe(
+      data => {localStorage.setItem('userId', String(data['userId'])); });
   }
 
   initForm() {

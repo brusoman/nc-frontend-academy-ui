@@ -11,6 +11,7 @@ import {Task} from '../../../models/task.model';
 export class SendFieldComponent implements OnInit {
 
   @Input() currentTask: Task;
+  @Input() taskId: number;
   fileToUpload: File = null;
   fileName = '!Файл не загружен!';
   handleFileInput(files: FileList) {
@@ -18,7 +19,7 @@ export class SendFieldComponent implements OnInit {
     this.fileName = files.item(0).name;
   }
   uploadFileToActivity() {
-    this.http.postFile(this.fileToUpload, 1, 16).subscribe(data => {
+    this.http.postFile(this.fileToUpload, this.taskId).subscribe(data => {
       // do something, if upload success
     }, error => {
       console.log(error);
