@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { HttpService} from '../../../services/http.service';
 import {Task} from '../../../models/task.model';
 import {TaskLoadComponent} from '../task-load/task-load.component';
@@ -13,6 +13,7 @@ export class SendFieldComponent implements OnInit {
 
   @Input() currentTask: Task;
   @Input() taskId: number;
+  @Output() public  outToLoadPage = new EventEmitter();
   fileToUpload: File = null;
   response: number;
   fileName = '!Файл не загружен!';
@@ -23,6 +24,7 @@ export class SendFieldComponent implements OnInit {
   uploadFileToActivity() {
     this.http.postFile(this.fileToUpload, this.taskId).subscribe(data => {
       this.response =  data['status'];
+      this.outToLoadPage.emit(data['status'])
     }, error => {
       console.log(error);
     });

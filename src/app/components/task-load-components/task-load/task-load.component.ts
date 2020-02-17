@@ -13,6 +13,7 @@ import {Task} from '../../../models/task.model';
 })
 export class TaskLoadComponent implements OnInit {
 
+  errorResponseMessage: string;
   currentTaskJSON: string = null;
   currentUserTaskAttemptsJSON: string = null;
   currentTask: Task;
@@ -53,6 +54,14 @@ export class TaskLoadComponent implements OnInit {
       (data) => {this.currentTask = data;
                  this.currentTaskJSON = JSON.stringify(this.currentTask);
       });
+  }
+  receiveFromSendField(event){
+    if (event === 200){
+      this.getUserTaskAttempts(this.taskId);
+      this.getTask(this.taskId);
+    } else {
+      this.errorResponseMessage = 'Error ' + event;
+    }
   }
 
   ngOnInit() {
