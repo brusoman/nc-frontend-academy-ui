@@ -4,13 +4,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ##  Preparing project to run
 
-Run `npm install` to add node_modules. Run `ng add @clr/angular` to add clarity library.
+Run `npm install` to add node_modules. Run `ng add @clr/angular` to add clarity library. Run `npm install darkmode-js` to add dark theme.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Code scaffoldingn
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 

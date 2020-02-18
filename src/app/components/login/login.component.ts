@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder} from '@angular/forms';
 import {HttpService} from '../../services/http.service';
-import {UserData} from '../../models/userData.model';
 import {Router} from '@angular/router';
-
 
 
 @Component({
@@ -14,12 +12,10 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   user: FormGroup;
   done = false;
-  userData: UserData;
   error: any = null;
   errorMessage = 'Wrong username or password! Please try again';
   constructor(private fb: FormBuilder, private http: HttpService,
               private router: Router) {
-
   }
   login() {
     this.http.postLogPass(this.user.value)
@@ -37,6 +33,9 @@ export class LoginComponent implements OnInit {
   getUserId(username: string) {
     this.http.getUserDataByLogin(username).subscribe(
       data => {localStorage.setItem('userId', String(data['userId'])); });
+  }
+  darkModeSwitch() {
+    const back = document.querySelector('.login-wrapper') as HTMLElement;
   }
 
   initForm() {

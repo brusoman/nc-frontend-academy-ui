@@ -14,22 +14,31 @@ export class SendFieldComponent implements OnInit {
   @Input() currentTask: Task;
   @Input() taskId: number;
   @Output() public  outToLoadPage = new EventEmitter();
-  fileToUpload: File = null;
+  fileHtmlToUpload: File = null;
+  fileCssToUpload: File = null;
+  fileJsToUpload: File = null;
   response: number;
   fileName = '!Файл не загружен!';
   handleFileInput(files: FileList) {
-    this.fileToUpload = files.item(0);
-    this.fileName = files.item(0).name;
+    this.fileHtmlToUpload = files.item(0);
+    this.fileCssToUpload = files.item(1);
+    this.fileJsToUpload = files.item(2);
+    this.fileName = files.item(0).name + ', ' + files.item(1).name + ', ' + files.item(2).name;
   }
   uploadFileToActivity() {
-    this.http.postFile(this.fileToUpload, this.taskId).subscribe(data => {
+    this.http.postFile(this.fileHtmlToUpload, this.taskId).subscribe(data => {
       this.response =  data['status'];
-      this.outToLoadPage.emit(data['status'])
+      if (this.fileCssToUpload !== null) {
+      this.http.postFile(this.fileCssToUpload, this.taskId).subscribe( cssData => {
+        this.http.postFile(this.fileJsToUpload, this.taskId).subscribe(jsData => {
+          this.outToLoadPage.emit(jsData['status']);
+        });
+      }); }
     }, error => {
       console.log(error);
     });
   }
-  constructor(private http: HttpService, private taskLoad: TaskLoadComponent) { }
+  constructor(private http: HttpService) { }
 
   ngOnInit() {
   }

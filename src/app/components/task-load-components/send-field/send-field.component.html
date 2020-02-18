@@ -1,5 +1,5 @@
 <div class="sender">
-  <input class="sender__file" type="file" id="sender__file" placeholder="Путь к файлу"
+  <input multiple class="sender__file" type="file" id="sender__file" placeholder="Путь к файлу"
          (change)="handleFileInput($event.target.files)">
   <label for="sender__file" class="sender__file-wrapper">
     <input class="sender__file-check" value=" Имя файла: {{fileName}}" readonly>

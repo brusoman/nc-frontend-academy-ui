@@ -75,7 +75,7 @@ export class HttpService {
     }));
   }
   postFile(fileToUpload: File, taskId: number) {
-    const endpoint = this.url + '/user-tasks/upload?taskId=' + taskId + '&userId=' + localStorage.getItem('userId');
+    const endpoint = this.url + '/user  -tasks/upload?taskId=' + taskId + '&userId=' + localStorage.getItem('userId');
     const formData: FormData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
     return this.http.post(endpoint, formData, {observe: 'response'});
