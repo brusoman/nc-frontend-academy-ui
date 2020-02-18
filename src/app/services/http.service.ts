@@ -74,9 +74,9 @@ export class HttpService {
       });
     }));
   }
-  postFile(fileToUpload: FormData, taskId: number) {
+  postFile(formData: FormData, taskId: number) {
     const endpoint = this.url + '/user-tasks/upload?taskId=' + taskId + '&userId=' + localStorage.getItem('userId');
-    return this.http.post(endpoint, fileToUpload, {observe: 'response'});
+    return this.http.post(endpoint, formData, {observe: 'response'});
   }
   loggedIn() {
     return !!localStorage.getItem('token');

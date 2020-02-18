@@ -23,29 +23,19 @@ export class SendFieldComponent implements OnInit {
   fileName = '!Файл не загружен!';
   handleFileInput(files: FileList) {
     this.filesToUpload = files;
-    this.formData.append('file', files.item(0), files.item(0).name);
+    this.formData.append('fileHtml', files.item(0), files.item(0).name);
     this.fileName = files.item(0).name;
     if (files.item(1) !== undefined) {
-      for (let i = 1; i < 2; i++) {
-        this.formData.append('file', files.item(i), files.item(i).name);
-        this.fileName += ', ' + files.item(i).name;
-      }
+        this.formData.append('fileCss', files.item(1), files.item(1).name);
+        this.formData.append('fileJs', files.item(2), files.item(2).name);
+        this.fileName += ', ' + files.item(1).name + ', ' + files.item(2).name;
     }
   }
   uploadFileToActivity() {
-    this.http.postFile(this.formData[0], this.taskId).subscribe(data => {
-      if (this.formData !== undefined) {
-        this.http.postFile(this.formData[1], this.taskId).subscribe( data1 => {
-          this.http.postFile(this.formData[2], this.taskId).subscribe( data2 => {
-            this.response = data2['status'];
-            this.outToLoadPage.emit(data2['status']);
-            }
-          );
-        });
-      } else {
+    this.http.postFile(this.formData, this.taskId).subscribe(data => {
       this.response =  data['status'];
       this.outToLoadPage.emit(data['status']);
-      }}, error => {
+      }, error => {
       console.log(error);
     });
   }
