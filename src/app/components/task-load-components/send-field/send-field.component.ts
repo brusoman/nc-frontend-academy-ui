@@ -16,7 +16,6 @@ export class SendFieldComponent implements OnInit {
   @Input() taskId: number;
   @Output() public  outToLoadPage = new EventEmitter();
   formData: any = new FormData();
-  formDataClear: any = new FormData();
   filesToUpload: FileList;
   fileHtmlToUpload: File = null;
   fileCssToUpload: File = null;
@@ -40,7 +39,9 @@ export class SendFieldComponent implements OnInit {
     this.http.postFile(this.formData, this.taskId).subscribe(data => {
       this.response =  data['status'];
       this.outToLoadPage.emit(data['status']);
-      this.formData = this.formDataClear;
+      this.formData.delete('fileHtml');
+      this.formData.delete('fileCss');
+      this.formData.delete('fileJs');
       }, error => {
       console.log(error);
     });
