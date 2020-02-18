@@ -23,13 +23,13 @@ export class SendFieldComponent implements OnInit {
     this.formData.delete('fileCss');
     this.formData.delete('fileJs');
     this.filesToUpload = files;
-    this.formData.append('file', files.item(0), files.item(0).name);
+    this.formData.append('files[]', files.item(0), files.item(0).name);
     this.fileName = files.item(0).name;
     if (files.item(1) !== null) {
-      this.formData.append('file', files.item(1), files.item(1).name);
+      this.formData.append('files[]', files.item(1), files.item(1).name);
       this.fileName += ', ' + files.item(1).name;
       if (files.item(2) !== null) {
-        this.formData.append('file', files.item(2), files.item(2).name);
+        this.formData.append('files[]', files.item(2), files.item(2).name);
         this.fileName += ', ' + files.item(2).name;
       }
     }
