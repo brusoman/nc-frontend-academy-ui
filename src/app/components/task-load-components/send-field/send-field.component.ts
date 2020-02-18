@@ -14,27 +14,27 @@ export class SendFieldComponent implements OnInit {
   @Input() currentTask: Task;
   @Input() taskId: number;
   @Output() public  outToLoadPage = new EventEmitter();
+  formData: any = new FormData();
+  filesToUpload: Array<File> = [];
   fileHtmlToUpload: File = null;
   fileCssToUpload: File = null;
   fileJsToUpload: File = null;
   response: number;
   fileName = '!Файл не загружен!';
-  handleFileInput(files: FileList) {
-    this.fileHtmlToUpload = files.item(0);
-    this.fileCssToUpload = files.item(1);
-    this.fileJsToUpload = files.item(2);
-    this.fileName = files.item(0).name + ', ' + files.item(1).name + ', ' + files.item(2).name;
+  handleFileInput(files: any) {
+    this.filesToUpload = files.target.files as Array<File>;
   }
   uploadFileToActivity() {
-    this.http.postFile(this.fileHtmlToUpload, this.taskId).subscribe(data => {
+    const formData: any = new FormData();
+    const files: Array<File> = this.filesToUpload;
+    formData.append('file', files[0], files[0].name);
+    for (let i = 1; i < files.length; i++) {
+      formData.append('files', files[i], files[i]['name']);
+    }
+    this.http.postFile(formData, this.taskId).subscribe(data => {
       this.response =  data['status'];
-      if (this.fileCssToUpload !== null) {
-      this.http.postFile(this.fileCssToUpload, this.taskId).subscribe( cssData => {
-        this.http.postFile(this.fileJsToUpload, this.taskId).subscribe(jsData => {
-          this.outToLoadPage.emit(jsData['status']);
-        });
-      }); }
-    }, error => {
+      this.outToLoadPage.emit(data['status']);
+      }, error => {
       console.log(error);
     });
   }
