@@ -3,6 +3,7 @@ import {Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {HttpService} from '../../../services/http.service';
 import {UserTask} from '../../../models/userTask.model';
+import {Task} from '../../../models/task.model';
 
 @Component({
   selector: 'app-task-load',
@@ -12,31 +13,65 @@ import {UserTask} from '../../../models/userTask.model';
 })
 export class TaskLoadComponent implements OnInit {
 
+  errorResponseMessage: string;
   currentTaskJSON: string = null;
-  currentTask: UserTask;
+  currentUserTaskAttemptsJSON: string = null;
+  currentTask: Task;
+  currentUserTaskAttempts: UserTask[];
   error: any = null;
   private taskId: number;
   private routeSubscription: Subscription;
   private querySubscription: Subscription;
-
   constructor(private route: ActivatedRoute, private http: HttpService) {
-
     this.routeSubscription = route.params.subscribe(params => this.taskId = params.taskId);
     this.querySubscription = route.queryParams.subscribe(
     (queryParam: any) => {
        this.currentTaskJSON = queryParam.currentTask;
+       this.currentUserTaskAttemptsJSON = queryParam.currentUserTaskAttempts;
        try {
          this.currentTask = JSON.parse(this.currentTaskJSON);
        } catch (e) {
          this.error = e;
-         this.getUserTask(this.taskId);
+         this.getTask(this.taskId);
        }
+       try {
+        this.currentUserTaskAttempts = JSON.parse(this.currentUserTaskAttemptsJSON);
+      } catch (e) {
+        this.error = e;
+        this.getUserTaskAttempts(this.taskId);
+      }
     });
   }
-
-  getUserTask(taskId: number) {
-    this.http.getUserTask(taskId, 1).subscribe(
-      (data) => {this.currentTask = data; });
+  createTemplate(): UserTask[] {
+    return [{progress: 0,
+      time: 'Попыток нет',
+      urlUserPicture: 'template.png',
+      urlSamplePicture: 'template.png'}];
+  }
+  getUserTaskAttempts(taskId: number) {
+    this.http.getUserTaskAttempts(taskId).subscribe(
+      (data) => {
+        if (data.length === 0) {
+          this.currentUserTaskAttempts = this.createTemplate();
+      } else {
+          this.currentUserTaskAttempts = data;
+      }
+        this.currentUserTaskAttemptsJSON = JSON.stringify(this.currentUserTaskAttempts);
+      });
+  }
+  getTask(taskId: number) {
+    this.http.getTask(taskId).subscribe(
+      (data) => {this.currentTask = data;
+                 this.currentTaskJSON = JSON.stringify(this.currentTask);
+      });
+  }
+  receiveFromSendField(event) {
+    if (event === 200) {
+      this.getUserTaskAttempts(this.taskId);
+      this.getTask(this.taskId);
+    } else {
+      this.errorResponseMessage = 'Error ' + event;
+    }
   }
 
   ngOnInit() {

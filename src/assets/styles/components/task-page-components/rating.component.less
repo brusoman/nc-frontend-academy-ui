@@ -1,7 +1,7 @@
 .rating{
   display: grid;
   grid-template-rows: 30px 304px 100px;
-  grid-template-columns: 1060px 1fr;
+  grid-template-columns: 1040px 1fr;
   justify-items: center;
 }
 .rating__header{
@@ -26,15 +26,15 @@
   button:hover{background: rgb(0, 37, 56)};
 }
 .rating__pictures__difference{
-  width: 490px;
+  width: 500px;
   position: absolute;
-  box-shadow: 3px 3px 1px rgba(200, 200, 200, 0.5);
 }
 .rating__pictures__userPicture{
-  width: 490px;
+  width: 500px;
+  box-shadow: 3px 3px 1px rgba(200, 200, 200, 0.5);
 }
 .rating__pictures__original{
-  width: 490px;
+  width: 500px;
   box-shadow: 3px 3px 1px rgba(200, 200, 200, 0.5);
 }
 .rating__pictures__swap{
@@ -46,18 +46,32 @@
 }
 .rating__passes{
   align-self: end;
+  justify-items: center;
 }
 .rating__table{
-  margin: 0;
-  width: 190px;
+  margin-right: 5px;
   align-self: start;
   border: none;
-  box-shadow: 3px 3px 1px rgba(200, 200, 200, 0.2);
+  box-shadow: 3px 3px 1px rgba(200, 200, 200, 0.5);
+  border-radius: 3px;
+  tr:hover{background-color: #cccccc}
+}
+.rating__table__time{
+  font-size: 11px;
+  cursor: pointer;
+}
+.rating__table__percent{
+  font-size: 11px;
+  cursor: pointer;
 }
 .rating__passes__stars_gold {
   color: gold;
 }
+.rating__passes__header{
+  justify-self: center;
+}
 .rating__passes__stars{
   display: inline-grid;
+  justify-self: center;
 }
 

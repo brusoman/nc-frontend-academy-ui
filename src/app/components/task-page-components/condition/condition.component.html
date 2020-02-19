@@ -1,12 +1,11 @@
-
 <div class="condition">
   <div class="condition__task">
-    {{currentDescr.name}}
+    {{currentTask.name}}
   </div>
   <div class="condition__deadline">
-    deadline: {{currentDescr.deadLine}}
+    deadline: {{Date(currentTask.deadline)}}
   </div>
   <div class="condition__text">
-    {{currentDescr.description}}
+    {{currentTask.description}}
   </div>
 </div>

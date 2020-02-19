@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 import {User} from '../models/user.model';
 import {UserData} from '../models/userData.model';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {UserTask, TryData, TaskDescription} from '../models/userTask.model';
+import {UserTask} from '../models/userTask.model';
 import {Task} from '../models/task.model';
 
 @Injectable()
@@ -40,54 +40,50 @@ export class HttpService {
     return this.http.post(this.url + '/auth', body);
   }
 
-  getUserTask(taskId: number, userId: number): Observable<UserTask>  {
-    return this.http.get('/assets/userTask.json').pipe(map((task: any) => {
-      return {name: task.name, deadLine: task.deadline, condition: task.condition, bestScreen: task.bestScreen,
-        tries: task.tries, bestTry: task.bestTry, triesData: task['triesData']};
+  getUserTaskAttempts(taskId: number): Observable<UserTask[]>  {
+    return this.http.get(this.url + '/user-tasks/task?taskId=' + taskId
+      + '&userId=' + localStorage.getItem('userId'))
+      .pipe(map(data => {
+        const attemptsList = data['attempts'];
+        return attemptsList.map((task: any) => {
+          return {progress: task.progress,
+            time: task.time,
+            urlUserPicture: task.urlUserPicture,
+            urlSamplePicture: task.urlSamplePicture};
+    });
+      }));
+  }
+  getTask(taskId: number): Observable<Task>  {
+    return this.http.get(this.url + '/tasks/' + taskId).pipe(map((task: any) => {
+      return {attemptsMax: task.attempts_max,
+        deadline: task.deadline,
+        description: task.description,
+        urlSample: task.urlSample,
+        name: task.name,
+        id: task.id,
+        section: task.section};
     }));
   }
 
-  getTask(): Observable<Task[]>  {
-    return this.http.get('/assets/tasks.json').pipe(map(data => {
+  getTaskList(): Observable<Task[]>  {
+    return this.http.get(this.url + '/tasks/all')
+      .pipe(map(data  => {
       const taskList = data['taskList'];
       return taskList.map((task: any) => {
         return {id: task.id, name: task.name, section: task.section};
       });
     }));
   }
-  postFile(fileToUpload: File) {
-    const endpoint = 'your-destination-url';
-    const formData: FormData = new FormData();
-    formData.append('fileKey', fileToUpload, fileToUpload.name);
-    return this.http.post(endpoint, formData);
+  postFile(formData: FormData, taskId: number) {
+    const endpoint = this.url + '/user-tasks/upload?taskId=' + taskId + '&userId=' + localStorage.getItem('userId');
+    return this.http.post(endpoint, formData, {observe: 'response'});
   }
-
-  getAttempts(userId: number, taskId: number, autToken: number): Observable<TryData[]> {
-    return this.http.get('assets/att.json').pipe(map(data => {
-      let attArr = data["attempts"];
-      return attArr.map(function (attempt: any) {
-        return {
-          time: attempt.time,
-          progress: attempt.progress,
-          urlUserPicture: attempt.urlUserPicture,
-          urlSamplePicture: attempt.urlSamplePicture
-        };
-      });
-    }));
+  loggedIn() {
+    return !!localStorage.getItem('token');
   }
-
-  getDescription(taskId: number, autToken: number): Observable<TaskDescription> {
-    return this.http.get( 'assets/descr.json').pipe(map( (descr: any) => {
-      return {
-        description: descr.description,
-        name: descr.name,
-        deadLine: descr.deadLine,
-        urlSample: descr.urlSample
-      };
-    }));
+  getToken() {
+    return localStorage.getItem('token');
   }
-
-
 }
 
 

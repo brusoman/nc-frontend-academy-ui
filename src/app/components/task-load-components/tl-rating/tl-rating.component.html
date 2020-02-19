@@ -2,7 +2,7 @@
   <div class="rating__pictures">
     <ng-container  *ngIf="num === 0">
       <div>
-        <img class="rating__pictures__difference" src="../../../../assets/images/difference.jpg" (click)="KingSize(3)">
+        <img class="rating__pictures__difference" src="{{dynamicUrl()}}{{currentUserTaskAttempts[attemptNumber].urlSamplePicture}}" (click)="KingSize(3)">
         <img class="rating__pictures__userPicture" src="../../../../assets/images/userPicture.jpg" (click)="KingSize(2)">
       </div>
 
@@ -19,24 +19,21 @@
 
 
     <button class="btn btn-primary rating__pictures__swap" (click)="Opacity()">Swap</button>
-    <span class="spinner spinner-md">
-    Loading...
-    </span>
   </div>
   <table class="table table-compact rating__table">
     <thead>
     <tr>
-      <th class="rating__table__cell">Количество попыток</th>
+      <th class="rating__table__cell">Рейтинг попыток</th>
       <th class="rating__table__cell_middle">Процент совпадения</th>
-      <th class="rating__table__cell">Последняя сдача</th>
+      <th class="rating__table__cell">Время сдачи</th>
     </tr>
     </thead>
-    <tbody *ngFor="let item of currentTask.triesData">
-    <tr>
-      <td class="rating__table__cell">{{currentTask.tries}}</td>
-      <td class="rating__table__cell_middle">{{item.progress}}</td>
-      <td class="rating__table__cell">{{item.time}}</td>
-
+    <tbody *ngFor="let item of currentUserTaskAttempts">
+    <tr class="rating__table__row"
+      (click)="setAttemptNumber(currentUserTaskAttempts.indexOf(item))">
+      <td class="rating__table__cell">{{currentUserTaskAttempts.indexOf(item) + 1}}</td>
+      <td class="rating__table__cell_middle">{{item.progress}}%</td>
+      <td class="rating__table__cell">{{Date(item.time)}}</td>
     </tr>
     </tbody>
   </table>

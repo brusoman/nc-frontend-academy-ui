@@ -1,28 +1,25 @@
-import {Component, Output, OnInit, EventEmitter} from '@angular/core';
+import {Component, Output, OnInit, EventEmitter, Input} from '@angular/core';
 import {Task} from '../../../models/task.model';
 import {HttpService} from '../../../services/http.service';
-import {UserTask, TryData, TaskDescription} from '../../../models/userTask.model';
-
+import {UserTask} from '../../../models/userTask.model';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   providers: [HttpService]
 })
 export class ListComponent implements OnInit {
-
-  @Output() public outToTaskPage = new EventEmitter();
-  @Output() public outToLoadPage = new EventEmitter();
-  currentTask: UserTask = null;
-  currentAtt: TryData[] = [];
-  currentDescr: TaskDescription = null;
-  taskList: Task[] = [];
+  @Output() public outAttemptsToTaskPage = new EventEmitter();
+  @Output() public outTaskToTaskPage = new EventEmitter();
+  currentUserTaskAttempts: UserTask[];
+  currentTask: Task;
+  taskList: Task[];
   isPressed = true;
   basicTasks: Task[] = [];
   levelUpTasks: Task[] = [];
   advancedTasks: Task[] = [];
-  currentTaskJson: string = null;
-
-  private createTaskArrays() {
+  currentUserTaskAttemptsJSON: string = null;
+  currentTaskJSON: string = null;
+  createTaskArrays() {
     let i = 0;
     while (i < this.taskList.length) {
       switch (this.taskList[i].section) {
@@ -44,40 +41,41 @@ export class ListComponent implements OnInit {
       }
     }
   }
-
-  setUserTask() {
-    this.currentTask.name       = this.currentDescr.name;
-    this.currentTask.condition  = this.currentDescr.description;
-    this.currentTask.deadLine   = this.currentDescr.deadLine;
-    this.currentTask.bestTry    = this.currentDescr.urlSample;
-    this.currentTask.triesData  = this.currentAtt;
-  }
-  getUserTask(taskId: number) {
-    this.http.getAttempts(1, taskId,13).subscribe(
-      (data) => {
-        this.currentAtt             = data;
-        this.currentTask.triesData  = this.currentAtt;
-      });
-    this.http.getDescription(taskId, 13).subscribe(
-      (data) => {
-        this.currentDescr           = data;
-        this.currentTask.name       = this.currentDescr.name;
-        this.currentTask.condition  = this.currentDescr.description;
-        this.currentTask.deadLine   = this.currentDescr.deadLine;
-        this.currentTask.bestTry    = this.currentDescr.urlSample;
-      });
-    this.currentTaskJson = JSON.stringify(this.currentTask);
-  }
-
-  sendToTaskPage(taskId: number) {
-    this.getUserTask(taskId);
+  sendToTaskPage(idList: number) {
+    this.getUserTaskAttempts(idList);
+    this.getTask(idList);
     this.isPressed = true;
   }
   getTaskList() {
-    this.http.getTask().subscribe(
+    this.http.getTaskList().subscribe(
       (data) => {this.taskList = data;
                  this.createTaskArrays(); }
     );
+  }
+  getUserTaskAttempts(taskId: number) {
+    this.http.getUserTaskAttempts(taskId).subscribe(
+      (data) => {
+        if (data.length === 0) {
+          this.currentUserTaskAttempts = this.createTemplate();
+        } else {
+          this.currentUserTaskAttempts = data;
+        }
+        this.outAttemptsToTaskPage.emit(this.currentUserTaskAttempts);
+        this.currentUserTaskAttemptsJSON = JSON.stringify(this.currentUserTaskAttempts);
+        });
+  }
+  createTemplate(): UserTask[] {
+    return [{progress: 0,
+      time: 'Попыток нет',
+      urlUserPicture: 'template.png',
+      urlSamplePicture: 'template.png'}];
+  }
+  getTask(taskId: number) {
+    this.http.getTask(taskId).subscribe(
+      (data) => {this.currentTask = data;
+                 this.outTaskToTaskPage.emit(this.currentTask);
+                 this.currentTaskJSON = JSON.stringify(this.currentTask);
+      });
   }
 
   constructor(private http: HttpService) {}
