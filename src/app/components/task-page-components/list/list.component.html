@@ -8,7 +8,7 @@
               'currentUserTaskAttempts': currentUserTaskAttemptsJSON}">
           {{item.name}}
         </div>
-        <div class="nav__group__options" *ngIf="isPressed"
+        <div class="nav__group__options"
              (click)="sendToTaskPage(item.id)">...</div>
       </div>
     </clr-vertical-nav-group-children>
@@ -22,7 +22,7 @@
               'currentUserTaskAttempts': currentUserTaskAttemptsJSON}">
           {{item.name}}
         </div>
-        <div class="nav__group__options" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</div>
+        <div class="nav__group__options" (click)="sendToTaskPage(item.id)">...</div>
       </div>
     </clr-vertical-nav-group-children>
   </clr-vertical-nav-group>
@@ -35,11 +35,11 @@
               'currentUserTaskAttempts': currentUserTaskAttemptsJSON}">
           {{item.name}}
         </div>
-        <div class="nav__group__options" *ngIf="isPressed" (click)="sendToTaskPage(item.id)">...</div>
+        <div class="nav__group__options" (click)="sendToTaskPage(item.id)">...</div>
       </div>
     </clr-vertical-nav-group-children>
   </clr-vertical-nav-group>
-  <a clrVerticalNavLink (click)="sendToTaskPage(null)">
+  <a clrVerticalNavLink class="nav__group__close" (click)="close()">
     Close
   </a>
 </clr-vertical-nav>

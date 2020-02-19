@@ -10,10 +10,10 @@ import {UserTask} from '../../../models/userTask.model';
 export class ListComponent implements OnInit {
   @Output() public outAttemptsToTaskPage = new EventEmitter();
   @Output() public outTaskToTaskPage = new EventEmitter();
+  @Output() public outCloseToTaskPage = new EventEmitter();
   currentUserTaskAttempts: UserTask[];
   currentTask: Task;
   taskList: Task[];
-  isPressed = true;
   basicTasks: Task[] = [];
   levelUpTasks: Task[] = [];
   advancedTasks: Task[] = [];
@@ -42,9 +42,8 @@ export class ListComponent implements OnInit {
     }
   }
   sendToTaskPage(idList: number) {
-    this.getUserTaskAttempts(idList);
-    this.getTask(idList);
-    this.isPressed = true;
+      this.getUserTaskAttempts(idList);
+      this.getTask(idList);
   }
   getTaskList() {
     this.http.getTaskList().subscribe(
@@ -63,6 +62,9 @@ export class ListComponent implements OnInit {
         this.outAttemptsToTaskPage.emit(this.currentUserTaskAttempts);
         this.currentUserTaskAttemptsJSON = JSON.stringify(this.currentUserTaskAttempts);
         });
+  }
+  close() {
+    this.outCloseToTaskPage.emit();
   }
   createTemplate(): UserTask[] {
     return [{progress: 0,
