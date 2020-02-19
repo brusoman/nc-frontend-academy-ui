@@ -2,16 +2,20 @@
   <div class="rating__pictures">
     <ng-container  *ngIf="num === 0">
       <div>
-        <img class="rating__pictures__difference" src="{{dynamicUrl()}}{{currentUserTaskAttempts[attemptNumber].urlSamplePicture}}" (click)="KingSize(3)">
-        <img class="rating__pictures__userPicture" src="../../../../assets/images/userPicture.jpg" (click)="KingSize(2)">
+        <img class="rating__pictures__difference"
+             src="{{dynamicUrl()}}{{currentUserTaskAttempts[attemptNumber].urlSamplePicture}}" (click)="KingSize(3)">
+        <img class="{{dynamicUrl()}}{{currentUserTaskAttempts[attemptNumber].urlUserPicture}}"
+             src="../../../../assets/images/userPicture.jpg" (click)="KingSize(2)">
       </div>
 
         <img class ="rating__pictures__original" src="../../../../assets/images/original.jpg" (click)="KingSize(1)">
     </ng-container>
     <ng-container *ngIf="num !== 0">
       <div>
-        <img class="rating__pictures__difference" src="../../../../assets/images/difference.jpg" (click)="KingSize(3)">
-        <img class="rating__pictures__userPicture" src="../../../../assets/images/userPicture.jpg" (click)="KingSize(2)">
+        <img class="rating__pictures__difference"
+             src="{{dynamicUrl()}}{{currentUserTaskAttempts[attemptNumber].urlSamplePicture}}" (click)="KingSize(3)">
+        <img class="rating__pictures__userPicture"
+             src="{{dynamicUrl()}}{{currentUserTaskAttempts[attemptNumber].urlUserPicture}}" (click)="KingSize(2)">
       </div>
 
       <img class ="rating__pictures__original" src="../../../../assets/images/original.jpg" (click)="KingSize(1)">
@@ -49,12 +53,14 @@
       </ng-container>
 
       <ng-container *ngIf="num === 2">
-        <img class="display__pictures__user_big" src="../../../../assets/images/userPicture.jpg" (click)="KingSize(0)">
+        <img class="display__pictures__user_big"
+             src="{{dynamicUrl()}}{{currentUserTaskAttempts[attemptNumber].urlUserPicture}}" (click)="KingSize(0)">
         <button class="btn btn-primary display__pictures__swap" (click)="Opacity()">Swap</button>
       </ng-container>
 
       <ng-container *ngIf="num === 3">
-        <img class="display__pictures__diff_big" src="../../../../assets/images/difference.jpg" (click)="KingSize(0)">
+        <img class="display__pictures__diff_big"
+             src="{{dynamicUrl()}}{{currentUserTaskAttempts[attemptNumber].urlSamplePicture}}" (click)="KingSize(0)">
         <button class="btn btn-primary display__pictures__swap" (click)="Opacity()">Swap</button>
       </ng-container>
     </div>
