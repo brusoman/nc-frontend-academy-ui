@@ -14,55 +14,52 @@
   box-shadow: 3px 3px 1px rgba(200, 200, 200, 0.5);
 }
 .rating__pictures__difference{
+  cursor: pointer;
   max-width: 480px;
   position: absolute;
 }
 .rating__pictures__original{
+  cursor: pointer;
   max-width: 480px;
   box-shadow: 3px 3px 1px rgba(200, 200, 200, 0.5);
 }
 
 
-
-
-
-
 .display__pictures__user_big{
   max-width: 1080px;
-  box-shadow: 3px 3px 1px rgba(200, 200, 200, 0.5);
 }
 
 .display__pictures__diff_big{
+  cursor: pointer;
   max-width: 1080px;
   position: absolute;
 }
 
 .display__pictures__original_big{
+  cursor: pointer;
   max-width: 1080px;
-  box-shadow: 3px 3px 1px rgba(200, 200, 200, 0.5);
-}
-
-.parent-noflex__noflex_big__swap{
 }
 
 .display{
-  background: rgba(11, 16, 21, 0.99);
+  margin-top: 60px;
+  display: grid;
+  grid-template-rows: 610px 50px;
+  align-content: start;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  background: rgba(11, 16, 21, 0.95);
   height: 100%;
-  opacity: 0.975;
   position: fixed;
   width: 100%;
   z-index: 100;
   top: 0;
   left: 0;
+  button:hover{background: rgb(0, 37, 56)};
 }
 
 .display__pictures{
-  height: 200px;
-  position: fixed;
-  top: 100px;
-  left: 17%;
-  color: #172530;
-  width: 300px;
+  margin-top: 50px;
 }
 
 .rating__table{
@@ -81,13 +78,13 @@
   justify-self: center;
 }
 
-.display__pictures__swap{
+.display__swap{
+  margin-top: 50px;
+  width: 150px;
   border: none;
   background-color: #6895c2;
   color: #fafafa;
-  box-shadow: 2px 2px 1px rgba(200, 200, 200, 0.5);
   font-weight: bold;
-  justify-self: center;
 }
 .rating__table__cell{
   border: 1px solid #cbcbcb;

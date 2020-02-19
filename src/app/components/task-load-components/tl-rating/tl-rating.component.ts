@@ -14,7 +14,10 @@ export class TlRatingComponent implements OnInit {
   @Input() currentUserTaskAttempts: UserTask[];
   urlBackend = 'http://localhost:8080/backend/files/';
   urlAssets = 'http://localhost:4200/assets/images/';
-  differenceOpacity = false;
+  big = false;
+  num = 0;
+  differenceOpacitySmall = false;
+  differenceOpacityBig = false;
   Date(dateString: string) {
     if (dateString === 'Попыток нет') {
       return dateString;
@@ -30,16 +33,24 @@ export class TlRatingComponent implements OnInit {
       return this.urlBackend;
     }
   }
-  big = false;
-  num = 0;
-  Opacity() {
-    const difference = document.querySelector('.rating__pictures__difference') as HTMLElement;
-    if (this.differenceOpacity === false) {
-      difference.style.opacity = '0%';
-      this.differenceOpacity = true;
+  OpacitySmall() {
+    const differenceSmall = document.querySelector('.rating__pictures__difference') as HTMLElement;
+    if (this.differenceOpacitySmall === false) {
+      differenceSmall.style.opacity = '0%';
+      this.differenceOpacitySmall = true;
     } else {
-      difference.style.opacity = '100%';
-      this.differenceOpacity = false;
+      differenceSmall.style.opacity = '100%';
+      this.differenceOpacitySmall = false;
+    }
+  }
+  OpacityBig() {
+    const differenceBig = document.querySelector('.display__pictures__diff_big') as HTMLElement;
+    if (this.differenceOpacityBig === false) {
+      differenceBig.style.opacity = '0%';
+      this.differenceOpacityBig = true;
+    } else {
+      differenceBig.style.opacity = '100%';
+      this.differenceOpacityBig = false;
     }
   }
 
