@@ -54,10 +54,21 @@ export class ListComponent implements OnInit {
   }
   getUserTaskAttempts(taskId: number) {
     this.http.getUserTaskAttempts(taskId).subscribe(
-      (data) => {this.currentUserTaskAttempts = data;
-                 this.outAttemptsToTaskPage.emit(this.currentUserTaskAttempts);
-                 this.currentUserTaskAttemptsJSON = JSON.stringify(this.currentUserTaskAttempts);
+      (data) => {
+        if (data.length === 0) {
+          this.currentUserTaskAttempts = this.createTemplate();
+        } else {
+          this.currentUserTaskAttempts = data;
+        }
+        this.outAttemptsToTaskPage.emit(this.currentUserTaskAttempts);
+        this.currentUserTaskAttemptsJSON = JSON.stringify(this.currentUserTaskAttempts);
         });
+  }
+  createTemplate(): UserTask[] {
+    return [{progress: 0,
+      time: 'Попыток нет',
+      urlUserPicture: 'template.png',
+      urlSamplePicture: 'template.png'}];
   }
   getTask(taskId: number) {
     this.http.getTask(taskId).subscribe(

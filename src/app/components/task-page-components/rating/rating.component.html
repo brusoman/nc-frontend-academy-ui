@@ -5,10 +5,10 @@
   <div class="rating__pictures">
     <div>
       <img class="rating__pictures__difference"
-           src="http://localhost:8080/backend/files/{{currentUserTaskAttempts[attemptNumber].urlSamplePicture}}"
+           src="{{currentUserTaskAttempts[attemptNumber].urlSamplePicture}}"
            alt="logo">
       <img class="rating__pictures__userPicture"
-           src="http://localhost:8080/backend/files/{{currentUserTaskAttempts[attemptNumber].urlUserPicture}}"
+           src="{{dynamicUrl()}}{{currentUserTaskAttempts[attemptNumber].urlUserPicture}}"
            alt="logo">
     </div>
     <img class="rating__pictures__original" src="http://localhost:8080/backend/files/{{currentTask.urlSample}}" alt="logo">

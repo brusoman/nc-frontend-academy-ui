@@ -2,9 +2,9 @@
   <div class="rating__pictures">
     <div>
       <img class="rating__pictures__difference"
-           src="http://localhost:8080/backend/files/{{currentUserTaskAttempts[attemptNumber].urlSamplePicture}}">
+           src="{{dynamicUrl()}}{{currentUserTaskAttempts[attemptNumber].urlSamplePicture}}">
       <img class="rating__pictures__userPicture"
-           src="http://localhost:8080/backend/files/{{currentUserTaskAttempts[attemptNumber].urlUserPicture}}">
+           src="{{dynamicUrl()}}{{currentUserTaskAttempts[attemptNumber].urlUserPicture}}">
     </div>
     <img class ="rating__pictures__original" src="http://localhost:8080/backend/files/{{currentTask.urlSample}}">
     <button class="btn btn-primary rating__pictures__swap" (click)="Opacity()">Swap</button>

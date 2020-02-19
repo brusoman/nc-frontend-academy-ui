@@ -42,11 +42,21 @@ export class TaskLoadComponent implements OnInit {
       }
     });
   }
-
+  createTemplate(): UserTask[] {
+    return [{progress: 0,
+      time: 'Попыток нет',
+      urlUserPicture: 'template.png',
+      urlSamplePicture: 'template.png'}];
+  }
   getUserTaskAttempts(taskId: number) {
     this.http.getUserTaskAttempts(taskId).subscribe(
-      (data) => {this.currentUserTaskAttempts = data;
-                 this.currentUserTaskAttemptsJSON = JSON.stringify(this.currentUserTaskAttempts);
+      (data) => {
+        if (data.length === 0) {
+          this.currentUserTaskAttempts = this.createTemplate();
+      } else {
+          this.currentUserTaskAttempts = data;
+      }
+        this.currentUserTaskAttemptsJSON = JSON.stringify(this.currentUserTaskAttempts);
       });
   }
   getTask(taskId: number) {
@@ -55,8 +65,8 @@ export class TaskLoadComponent implements OnInit {
                  this.currentTaskJSON = JSON.stringify(this.currentTask);
       });
   }
-  receiveFromSendField(event){
-    if (event === 200){
+  receiveFromSendField(event) {
+    if (event === 200) {
       this.getUserTaskAttempts(this.taskId);
       this.getTask(this.taskId);
     } else {

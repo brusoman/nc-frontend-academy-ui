@@ -12,10 +12,23 @@ export class TlRatingComponent implements OnInit {
   attemptNumber = 0;
   @Input() currentTask: Task;
   @Input() currentUserTaskAttempts: UserTask[];
+  urlBackend = 'http://localhost:8080/backend/files/';
+  urlAssets = 'http://localhost:4200/assets/images/';
   differenceOpacity = false;
   Date(dateString: string) {
-    const date: Date = new Date(dateString.split('[')[0]);
-    return date.toLocaleString('en-US', {hour12: false});
+    if (dateString === 'Попыток нет') {
+      return dateString;
+    } else {
+      const date: Date = new Date(dateString.split('[')[0]);
+      return date.toLocaleString('en-US', {hour12: false});
+    }
+  }
+  dynamicUrl() {
+    if (this.currentUserTaskAttempts[0].urlUserPicture === 'template.png') {
+      return this.urlAssets;
+    } else {
+      return this.urlBackend;
+    }
   }
   Opacity() {
     const difference = document.querySelector('.rating__pictures__difference') as HTMLElement;
